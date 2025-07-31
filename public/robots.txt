@@ -1,0 +1,35 @@
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://xlevatetech.com/sitemap.xml
+
+# Search engines should not index these paths
+Disallow: /404
+Disallow: /admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Crawl delay for other bots
+User-agent: *
+Crawl-delay: 1
+
+# Cache directives
+# Cache static assets for performance
+User-agent: *
+Allow: /icons/
+Allow: /images/
+Allow: /lovable-uploads/
+

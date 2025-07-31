@@ -1,0 +1,44 @@
+
+/* Footer Circuit Design - Static but intricate */
+.circuit-design {
+  will-change: auto;
+  backface-visibility: hidden;
+}
+
+/* Accessibility: Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .circuit-design,
+  .circuit-design * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Enhanced focus styles for better accessibility */
+.footer-link:focus {
+  outline: 2px solid #70EDFF;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .footer-text {
+    color: white !important;
+  }
+  
+  .footer-link {
+    border: 1px solid white;
+  }
+}
+
+/* Print styles */
+@media print {
+  .circuit-design {
+    display: none;
+  }
+  
+  .footer-links {
+    display: block !important;
+  }
+}

@@ -19,4 +19,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: './', // or '/' if not in subdirectory
+  build: {
+    outDir: 'dist'
+  },
 }));

@@ -47,7 +47,7 @@ const ImplementationTimelineSection = () => {
           return <Card key={index} className="bg-gradient-to-br from-elevate-accent/10 to-elevate-accent/5 border border-elevate-accent/20 shadow-lg hover:shadow-xl transition-all duration-300 relative h-full">
                 <CardContent className="p-4 sm:p-6 lg:p-8 h-full flex flex-col">
                   {/* Step Number - Fixed positioning and sizing */}
-                  <div className="absolute top-4 left-4 w-8 h-8 bg-elevate-accent text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                  <div className="absolute inset-0 top-6 left-6 w-12 h-12 md:top-4 md:left-4 md:w-8 md:h-8 bg-elevate-accent text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
                     {index + 1}
                   </div>
                   

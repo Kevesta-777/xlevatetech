@@ -79,11 +79,12 @@ export const Newsletter: React.FC = () => {
       >
         {isSubmitting ? 'Subscribing...' : 'Subscribe to Newsletter'}
       </Button>
-      
-      {error && (
+      {/* {error && (
         <p className="text-red-400 text-xs">{error}</p>
-      )}
-      
+      )} */}
+      { isSubmitting && <p className="text-gray-500 text-xs text-center">
+        Subscribe to Newsletter functionality to be implemented.
+      </p> }
       <p className="text-gray-500 text-xs text-center">
         GDPR compliant. We don't share your data.
       </p>

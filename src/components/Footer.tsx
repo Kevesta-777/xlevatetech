@@ -7,13 +7,7 @@ import { SocialMediaIcons } from "./footer/SocialMediaIcons";
 import { TrustBadges } from "./footer/TrustBadges";
 import { Newsletter } from "./footer/Newsletter";
 import { OrganizationSchema } from "./footer/OrganizationSchema";
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,7 +33,6 @@ const Footer = () => {
               <li>
                 <Link 
                   to="/services" 
-                  onClick={scrollToTop}
                   className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
                 >
                   Services
@@ -48,7 +41,6 @@ const Footer = () => {
               <li>
                 <Link 
                   to="/industries" 
-                  onClick={scrollToTop}
                   className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
                 >
                   Industries
@@ -57,7 +49,6 @@ const Footer = () => {
               <li>
                 <Link 
                   to="/case-studies" 
-                  onClick={scrollToTop}
                   className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
                 >
                   Case Studies
@@ -66,7 +57,6 @@ const Footer = () => {
               <li>
                 <Link 
                   to="/blog" 
-                  onClick={scrollToTop}
                   className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
                 >
                   Blog
@@ -75,7 +65,6 @@ const Footer = () => {
               <li>
                 <Link 
                   to="/about" 
-                  onClick={scrollToTop}
                   className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
                 >
                   About Xlevate Tech
@@ -84,7 +73,6 @@ const Footer = () => {
               <li>
                 <Link 
                   to="/automation-roi-calculator" 
-                  onClick={scrollToTop}
                   className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
                 >
                   ROI Calculator

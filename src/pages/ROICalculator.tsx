@@ -23,6 +23,7 @@ const ROICalculator = () => {
   const [weeklyHours, setWeeklyHours] = useState([40]);
   const [showDataSources, setShowDataSources] = useState(false);
   const [stickyResults, setStickyResults] = useState(false);
+  // const [showMessage, setShowMessage] = useState(false);
 
   // Updated 2025 industry data with citations
   const industryData = {
@@ -104,7 +105,10 @@ const ROICalculator = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const generatePDFReport = () => {
-    // Placeholder for PDF generation functionality
+    // // Placeholder for PDF generation functionality
+    // setShowMessage(true);
+    // setTimeout(() => setShowMessage(false), 3000); // Hide after 3 seconds
+    alert("Download functionality to be implemented");
     console.log('Generating PDF report with current calculations...');
   };
   return <TooltipProvider>
@@ -541,7 +545,7 @@ const ROICalculator = () => {
           <Footer />
         </footer>
         <ScrollToTop />
-        <EnhancedXlevateScout />
+        {/* <EnhancedXlevateScout /> */}
         {/* Data Sources Modal */}
         <DataSourcesModal open={showDataSources} onOpenChange={setShowDataSources} />
       </div>

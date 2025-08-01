@@ -40,9 +40,9 @@ const LightSpotlight = ({
   return (
     <div 
       ref={containerRef}
-      className={`relative flex min-h-[320px] flex-col items-center justify-center overflow-hidden bg-elevate-dark w-full rounded-2xl z-0 group hover:scale-105 transition-transform duration-300 ${className}`}
+      className={`relative flex md:min-h-[320px] flex-col items-center justify-center overflow-hidden bg-elevate-dark w-full rounded-2xl z-0 group hover:scale-105 transition-transform duration-300 ${className}`}
     >
-      <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
+      <div className="relative hidden md:flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
         {/* Left lamp gradient - Enhanced brightness */}
         <div className="absolute inset-auto right-1/2 h-48 overflow-visible w-56 spotlight-left opacity-70 animate-spotlight-width group-hover:opacity-95 group-hover:scale-110 transition-all duration-500">
           <div className="absolute w-full left-0 bg-elevate-dark h-32 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]"></div>
@@ -71,7 +71,7 @@ const LightSpotlight = ({
       </div>
 
       {/* Content positioned in the middle */}
-      <div className="relative z-50 flex -translate-y-40 flex-col items-center px-5">
+      <div className="relative z-50 flex md:-translate-y-40 flex-col items-center px-5">
         <h3 className="mt-4 bg-gradient-to-br from-elevate-accent to-elevate-accent-light py-2 bg-clip-text text-center text-xl md:text-3xl font-bold tracking-tight text-transparent opacity-60 translate-y-12 animate-spotlight-up">
           {title}
         </h3>

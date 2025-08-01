@@ -87,18 +87,18 @@ const FAQSection = () => {
               >
                 <AccordionTrigger 
                   onClick={() => handleItemClick(faq.id)} 
-                  className="px-4 sm:px-6 py-4 sm:py-5 text-left text-base sm:text-lg font-medium hover:text-elevate-accent transition-colors flex justify-between items-start gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevate-accent no-underline hover:no-underline" 
+                  className="px-4 sm:px-6 py-4 sm:py-5 text-left font-medium hover:text-elevate-accent transition-colors flex justify-between items-start gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-elevate-accent no-underline hover:no-underline" 
                   aria-controls={`${faq.id}-content`}
                   aria-expanded={openItem === faq.id}
                 >
-                  <h3 className="text-left flex-1 pr-2 text-white leading-relaxed text-sm">{faq.question}</h3>
+                  <span className="text-left flex-1 pr-2 text-white leading-relaxed text-sm md:text-base lg:text-lg">{faq.question}</span>
                 </AccordionTrigger>
                 <AccordionContent
                   id={`${faq.id}-content`}
                   className="px-4 sm:px-6 pb-4 sm:pb-5 text-gray-300 animate-accordion-down overflow-visible"
                 >
                   <div className="pt-2 border-t border-elevate-accent/10">
-                    <p className="typography-body leading-relaxed text-gray-300 whitespace-normal break-words text-sm">{faq.answer}</p>
+                    <p className="typography-body leading-relaxed text-gray-300 whitespace-normal break-words text-sm md:text-base lg:text-lg">{faq.answer}</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>

@@ -286,9 +286,6 @@ const CaseStudies = () => {
                               <div className="text-xs font-medium text-primary mb-1 text-center">Project Timeline</div>
                               <div className="text-sm font-semibold text-white text-center">{project.week}</div>
                             </div>
-                            <div className="bg-gradient-to-r from-white/10  to-white/5   backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-                              <div className="text-sm font-semibold text-gray-300 text-center">{project.startDate}</div>
-                            </div>
                           </div>
                         </div>
 
@@ -301,7 +298,6 @@ const CaseStudies = () => {
                             <div className="text-sm text-gray-300 mb-3">
                               {project.phase}
                             </div>
-                            
                             {/* Progress Bar */}
                             <div className="mb-4">
                               <div className="flex justify-between items-center mb-2">
@@ -426,6 +422,7 @@ const CaseStudies = () => {
                             Metrics labeled 'industry avg.' or 'preliminary' are not final client outcomes and are subject to change.
                           </div>
                         </div>
+                        <div className="text-sm font-semibold text-gray-300 text-end">{project.startDate}</div>
                       </div>
                     </div>
                   </Card>;
@@ -459,12 +456,12 @@ const CaseStudies = () => {
         </section>
 
         {/* CTA Banner - Sticky for mobile */}
-        <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-primary to-primary-glow p-4 z-30 md:relative md:bg-none md:p-0 shadow-lg md:shadow-none">
-          <div className="md:py-16 md:bg-gradient-to-r md:from-primary md:to-primary-glow">
+        <div className="mx-16 bg-gradient-to-r from-primary to-primary-glow z-30 rounded-lg border-0 md:relative md:p-0">
+          <div className="md:py-6 md:bg-gradient-to-r md:from-primary md:to-slate-900 rounded-lg border-0">
             <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
               <div className="md:mb-4">
                 <p className="text-white font-medium text-sm md:text-xl mb-2 md:mb-0">
-                  See how AI could increase your efficiency—book a 15-min call.
+                  See how AI could increase your efficiency.
                 </p>
               </div>
               <Button size="lg" onClick={handleBookNow} className="bg-white text-primary hover:bg-white/90 font-semibold w-full md:w-auto min-h-[44px] px-8 focus:ring-2 focus:ring-white/20 focus:outline-none" aria-label="Book a 15-minute consultation call">

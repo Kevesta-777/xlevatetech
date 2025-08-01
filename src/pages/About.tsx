@@ -408,7 +408,7 @@ const About = () => {
         <Footer />
       </footer>
       <ScrollToTop />
-      <EnhancedXlevateScout />
+      {/* <EnhancedXlevateScout /> */}
     </div>
   );
 };

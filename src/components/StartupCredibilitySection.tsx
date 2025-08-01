@@ -36,10 +36,10 @@ const StartupCredibilitySection = () => {
   ];
 
   const industryBadges = [
-    "Healthcare & Pharmacy Operations",
-    "Real Estate & Property Management", 
-    "Finance & Wealth Management",
-    "SaaS & AI Startups"
+    "Finance",
+    "Real Estate", 
+    "Healthcare",
+    "Operations"
   ];
 
   return (

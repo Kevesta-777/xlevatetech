@@ -617,7 +617,7 @@ const WaveAnimationModule = () => {
   }, []);
 
   return (
-    <section className="relative w-full max-w-6xl aspect-[16/9] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+    <section className="relative w-full max-w-6xl aspect-[16/9] h-[400px] lg:h-[550px] overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
       {/* WebGL Shader Canvas for Advanced Waves */}
       <canvas ref={shaderCanvasRef} className="absolute inset-0 w-full h-full opacity-70" />
       

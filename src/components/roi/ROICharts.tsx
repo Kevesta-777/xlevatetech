@@ -166,11 +166,10 @@ const ROICharts = ({
             />
             <Legend 
               verticalAlign="bottom"
-              height={36}
+              height={60}
               wrapperStyle={{ 
                 fontSize: '12px',
                 color: chartColors.textSecondary,
-                paddingTop: '10px'
               }}
             />
           </PieChart>

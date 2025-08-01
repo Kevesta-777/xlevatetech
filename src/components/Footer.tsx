@@ -7,8 +7,26 @@ import { SocialMediaIcons } from "./footer/SocialMediaIcons";
 import { TrustBadges } from "./footer/TrustBadges";
 import { Newsletter } from "./footer/Newsletter";
 import { OrganizationSchema } from "./footer/OrganizationSchema";
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
+const NavButton  = ({ to, label }: { to: string; label: string }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(to);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  return (
+    <li>
+      <button
+        onClick={handleClick}
+        className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
+      >
+        {label}
+      </button>
+    </li>
+  );
+};
 const Footer = () => {
   const currentYear = new Date().getFullYear();
     // Scroll to top smoothly
@@ -30,54 +48,12 @@ const Footer = () => {
               Explore
             </h3>
             <ul className="space-y-3">
-              <li>
-                <Link 
-                  to="/services" 
-                  className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/industries" 
-                  className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
-                >
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/case-studies" 
-                  className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
-                >
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/blog" 
-                  className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/about" 
-                  className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
-                >
-                  About Xlevate Tech
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/automation-roi-calculator" 
-                  className="text-gray-300 hover:text-[#4A90E2] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A90E2] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1f2c] min-h-[44px] flex items-center px-2 py-1 rounded-md"
-                >
-                  ROI Calculator
-                </Link>
-              </li>
+              <NavButton to="/services" label="Services" />
+              <NavButton to="/industries" label="Industries" />
+              <NavButton to="/case-studies" label="Case Studies" />
+              <NavButton to="/blog" label="Blog" />
+              <NavButton to="/about" label="About Xlevate Tech" />
+              <NavButton to="/automation-roi-calculator" label="ROI Calculator" />
             </ul>
           </div>
 

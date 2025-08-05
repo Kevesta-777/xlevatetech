@@ -53,18 +53,20 @@ const careerData = [
 
 const companyColors = {
   'Leasing & Management': '#3B82F6',
-  'Bswift': '#6366F1', 
+  'Bswift': '#6366F1',
   'Bounteous': '#8B5CF6',
   'XlevateTech': '#00D9FF'
 };
-
 export const CareerTimelineChart = () => {
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({
+    active,
+    payload,
+    label
+  }: any) => {
     if (active && payload && payload.length) {
       const data = payload[0]?.payload;
       if (data) {
-        return (
-          <div className="bg-elevate-dark/95 border border-elevate-accent/30 rounded-lg p-4 shadow-xl">
+        return <div className="bg-elevate-dark/95 border border-elevate-accent/30 rounded-lg p-4 shadow-xl">
             <p className="text-white font-semibold mb-3">{data.company} ({label})</p>
             <div className="space-y-2">
               <div className="grid grid-cols-2 gap-4">
@@ -85,21 +87,17 @@ export const CareerTimelineChart = () => {
                   <p className="text-elevate-accent font-semibold">{data.systemInt}%</p>
                 </div>
               </div>
-              {data.timeSaved > 0 && (
-                <div className="pt-2 border-t border-elevate-accent/20">
+              {data.timeSaved > 0 && <div className="pt-2 border-t border-elevate-accent/20">
                   <p className="text-gray-300 text-sm">Time Saved: <span className="text-elevate-accent font-semibold">{data.timeSaved.toLocaleString()} hrs</span></p>
                   <p className="text-gray-300 text-sm">Value: <span className="text-elevate-accent font-semibold">${data.moneySaved.toLocaleString()}</span></p>
                   <p className="text-gray-300 text-sm">ROI: <span className="text-elevate-accent font-semibold">{data.roi}%</span></p>
-                </div>
-              )}
+                </div>}
             </div>
-          </div>
-        );
+          </div>;
       }
     }
     return null;
   };
-
   const CustomLegend = ({ payload }: { payload?: Array<{ color: string; value: string }> }) => {
     return (
       <div className="grid grid-cols-2 justify-items-start lg:grid-cols-4 lg:justify-items-center gap-2 mt-4">
@@ -129,37 +127,53 @@ export const CareerTimelineChart = () => {
 
       <div className="h-80 md:h-96 w-full mb-8">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={careerData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+          <AreaChart data={careerData} margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 20
+        }}>
             <defs>
               <linearGradient id="processOptGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#00D9FF" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#00D9FF" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#00D9FF" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#00D9FF" stopOpacity={0.1} />
               </linearGradient>
               <linearGradient id="aiAutomationGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#FF6B6B" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#FF6B6B" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#FF6B6B" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#FF6B6B" stopOpacity={0.1} />
               </linearGradient>
               <linearGradient id="dataAnalysisGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#4ECDC4" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#4ECDC4" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#4ECDC4" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#4ECDC4" stopOpacity={0.1} />
               </linearGradient>
               <linearGradient id="systemIntGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#95A5A6" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#95A5A6" stopOpacity={0.1}/>
+                <stop offset="5%" stopColor="#95A5A6" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#95A5A6" stopOpacity={0.1} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
-            <XAxis 
-              dataKey="year" 
-              tick={{ fill: '#ffffff', fontSize: 12 }}
-              axisLine={{ stroke: '#ffffff' }}
-            />
-            <YAxis 
-              tick={{ fill: '#ffffff', fontSize: 12 }}
-              axisLine={{ stroke: '#ffffff' }}
-              label={{ value: 'Proficiency %', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fill: '#ffffff' } }}
-            />
+            <XAxis dataKey="year" tick={{
+            fill: '#ffffff',
+            fontSize: 12
+          }} axisLine={{
+            stroke: '#ffffff'
+          }} />
+            <YAxis tick={{
+            fill: '#ffffff',
+            fontSize: 12
+          }} axisLine={{
+            stroke: '#ffffff'
+          }} label={{
+            value: 'Proficiency %',
+            angle: -90,
+            position: 'insideLeft',
+            style: {
+              textAnchor: 'middle',
+              fill: '#ffffff'
+            }
+          }} />
             <Tooltip content={<CustomTooltip />} />
+
             <Legend content={<CustomLegend />} />
             <Area
               type="monotone"
@@ -222,10 +236,9 @@ export const CareerTimelineChart = () => {
                 <div className="absolute inset-0 flex top-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                   <div className="bg-elevate-dark/95 border border-elevate-accent/30 rounded-lg p-3 shadow-xl whitespace-nowrap text-center">
                     <p className="text-white font-semibold text-sm text-wrap">{item.company}</p>
+
                     <p className="text-elevate-accent text-xs">{item.year}</p>
-                    {item.roi > 0 && (
-                      <p className="text-gray-300 text-xs mt-1">{item.roi}% ROI</p>
-                    )}
+                    {item.roi > 0 && <p className="text-gray-300 text-xs mt-1">{item.roi}% ROI</p>}
                   </div>
                 </div>
                 
@@ -234,8 +247,7 @@ export const CareerTimelineChart = () => {
                   <p className="text-white text-xs md:text-sm font-medium leading-tight">{item.company}</p>
                   <p className="text-elevate-accent text-xs">{item.year}</p>
                 </div>
-              </div>
-            ))}
+              </div>))}
           </div>
         </div>
       </div>
@@ -247,18 +259,18 @@ export const CareerTimelineChart = () => {
           <p className="text-gray-300 text-sm">Years Experience</p>
         </div>
         <div className="text-center p-4 bg-elevate-dark/30 rounded-lg border border-elevate-accent/10">
-          <p className="text-2xl font-bold text-elevate-accent">5K+</p>
-          <p className="text-gray-300 text-sm">Hours Saved</p>
+          <p className="text-elevate-accent text-center font-bold text-2xl">2-4 </p>
+          <p className="text-gray-300 text-sm">Weeks Implementation</p>
         </div>
         <div className="text-center p-4 bg-elevate-dark/30 rounded-lg border border-elevate-accent/10">
-          <p className="text-2xl font-bold text-elevate-accent">$520K+</p>
-          <p className="text-gray-300 text-sm">Value Generated</p>
+          <p className="text-2xl font-bold text-elevate-accent">   95%</p>
+          <p className="text-gray-300 text-sm">Client Satisfaction</p>
         </div>
         <div className="text-center p-4 bg-elevate-dark/30 rounded-lg border border-elevate-accent/10">
-          <p className="text-2xl font-bold text-elevate-accent">520%</p>
-          <p className="text-gray-300 text-sm">Max ROI Achieved</p>
+          <p className="text-2xl font-bold text-elevate-accent">40-60%</p>
+          <p className="text-gray-300 text-sm">Cost Savings</p>
         </div>
       </div>
     </div>
-  );
+  )
 };

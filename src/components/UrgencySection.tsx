@@ -1,11 +1,8 @@
-
 import { Clock, Calendar, AlertCircle } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
-
 const UrgencySection = () => {
-  return (
-    <section className="section-padding bg-gradient-to-br from-elevate-accent/10 to-elevate-accent/5 text-white relative overflow-hidden py-16">
+  return <section className="section-padding bg-gradient-to-br from-elevate-accent/10 to-elevate-accent/5 text-white relative overflow-hidden py-16">
       <div className="container mx-auto responsive-padding relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Urgency Message */}
@@ -108,15 +105,10 @@ const UrgencySection = () => {
             <p className="text-xl mb-6 text-blue-200">
               Don't wait - automation slots fill quickly
             </p>
-            <a 
-              href="https://calendly.com/raj-dalal-xlevatetech" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#0A2463] hover:bg-gray-100 font-bold text-base md:text-lg px-6 py-3 md:px-8 md:py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 min-h-[44px] mx-auto"
-            >
+            <a href="https://calendly.com/raj-dalal-xlevatetech" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-white text-[#0A2463] hover:bg-gray-100 font-bold text-base md:text-lg px-6 py-3 md:px-8 md:py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 min-h-[44px] mx-auto">
               <div className="flex items-center justify-start min-w-0">
                 <svg className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
                 </svg>
                 <span className="ml-2 text-sm md:text-base">
                   Schedule 15-Minute Discovery Call
@@ -132,8 +124,6 @@ const UrgencySection = () => {
         <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-[#70EDFF]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default UrgencySection;

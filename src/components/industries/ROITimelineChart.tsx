@@ -6,18 +6,18 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 // ROI timeline data showing payback periods
 const roiData = [
-  { month: "Month 1", Starter: -100, Professional: -100, Enterprise: -100 },
-  { month: "Month 2", Starter: -75, Professional: -80, Enterprise: -85 },
-  { month: "Month 3", Starter: -45, Professional: -55, Enterprise: -65 },
-  { month: "Month 4", Starter: -10, Professional: -25, Enterprise: -40 },
-  { month: "Month 5", Starter: 25, Professional: 5, Enterprise: -15 },
-  { month: "Month 6", Starter: 65, Professional: 40, Enterprise: 15 },
-  { month: "Month 7", Starter: 110, Professional: 80, Enterprise: 50 },
-  { month: "Month 8", Starter: 160, Professional: 125, Enterprise: 90 },
-  { month: "Month 9", Starter: 215, Professional: 175, Enterprise: 135 },
-  { month: "Month 10", Starter: 275, Professional: 230, Enterprise: 185 },
-  { month: "Month 11", Starter: 340, Professional: 290, Enterprise: 240 },
-  { month: "Month 12", Starter: 410, Professional: 355, Enterprise: 300 }
+  { month: "Month 1", Starter: -100, Professional: -100, Premium: -100 },
+  { month: "Month 2", Starter: -75, Professional: -80, Premium: -85 },
+  { month: "Month 3", Starter: -45, Professional: -55, Premium: -65 },
+  { month: "Month 4", Starter: -10, Professional: -25, Premium: -40 },
+  { month: "Month 5", Starter: 25, Professional: 5, Premium: -15 },
+  { month: "Month 6", Starter: 65, Professional: 40, Premium: 15 },
+  { month: "Month 7", Starter: 110, Professional: 80, Premium: 50 },
+  { month: "Month 8", Starter: 160, Professional: 125, Premium: 90 },
+  { month: "Month 9", Starter: 215, Professional: 175, Premium: 135 },
+  { month: "Month 10", Starter: 275, Professional: 230, Premium: 185 },
+  { month: "Month 11", Starter: 340, Professional: 290, Premium: 240 },
+  { month: "Month 12", Starter: 410, Professional: 355, Premium: 300 }
 ];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -50,7 +50,7 @@ export const ROITimelineChart = React.memo(() => {
             config={{
               Starter: { theme: { light: "#0EA5E9", dark: "#0EA5E9" }, label: "Starter Package" },
               Professional: { theme: { light: "#10B981", dark: "#10B981" }, label: "Professional Package" },
-              Enterprise: { theme: { light: "#A855F7", dark: "#A855F7" }, label: "Enterprise Package" },
+              Premium: { theme: { light: "#A855F7", dark: "#A855F7" }, label: "Premium Package" },
             }}
             className="h-full w-full"
           >
@@ -126,11 +126,11 @@ export const ROITimelineChart = React.memo(() => {
               />
               <Line 
                 type="monotone" 
-                dataKey="Enterprise" 
+                dataKey="Premium" 
                 stroke="#A855F7" 
                 strokeWidth={3} 
                 dot={{ r: 4, fill: "#A855F7" }} 
-                name="Enterprise Package"
+                name="Premium Package"
                 activeDot={{ r: 6, fill: "#A855F7" }}
               />
             </LineChart>

@@ -199,7 +199,6 @@ img {
   
   /* Fix CTA buttons centering on mobile */
   .flex.justify-center {
-    /* width: 100%; */
     text-align: center;
   }
 }

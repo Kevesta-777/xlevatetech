@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
@@ -43,22 +44,30 @@ const AnimatedMetric = ({
     }
   }, [inView, delay]);
 
+  // Check if prefix contains a range (like "15-20" or "30-60%")
+  const isRange = prefix.includes('-') && value === 0;
+
   return (
     <div ref={ref} className={`text-center p-4 rounded-lg ${className}`}>
       <Icon className={`w-6 h-6 mx-auto mb-2 ${iconClassName}`} />
       <div className="roi-metric-value text-2xl font-bold text-white">
         {shouldAnimate ? (
-          <CountUp
-            start={0}
-            end={value}
-            duration={duration}
-            decimals={decimals}
-            prefix={prefix}
-            suffix={suffix}
-            preserveValue
-          />
+          isRange ? (
+            // For ranges, just display the prefix without animation
+            `${prefix}${suffix}`
+          ) : (
+            <CountUp
+              start={0}
+              end={value}
+              duration={duration}
+              decimals={decimals}
+              prefix={prefix}
+              suffix={suffix}
+              preserveValue
+            />
+          )
         ) : (
-          `${prefix}0${suffix}`
+          isRange ? prefix : `${prefix}0${suffix}`
         )}
       </div>
       <div className="roi-metric-label text-sm text-gray-300">{label}</div>

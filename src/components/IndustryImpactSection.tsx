@@ -28,17 +28,17 @@ const IndustryImpactSection = () => {
     solutionIcon: Bot,
     industry: "Wealth Management"
   }, {
-    header: "Streamlining Operations: UR Appeals & Patient Intake Automation",
-    challenge: "Automate appeals and patient intake processes",
-    solution: "UR appeals engine, AI intake bot, workflow automation",
-    status: "Discovery & Requirements Phase",
-    progress: 10,
+    header: "Healthcare Administrative Optimization",
+    challenge: "Streamline patient workflows and administrative processes",
+    solution: "Patient scheduling automation, administrative workflow optimization, compliance documentation",
+    status: "Project Initiation Phase",
+    progress: 0,
     phase: "1",
-    weeks: "Week 1/8 - Starting TBD",
+    weeks: "Week 1/8 - Pilot Programs Available",
     icon: Pill,
     challengeIcon: Cog,
     solutionIcon: Zap,
-    industry: "Pharmacy / Healthcare"
+    industry: "Medical Practice / Healthcare"
   }];
   const handleViewCaseStudies = () => {
     // Navigate to case studies page

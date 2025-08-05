@@ -64,7 +64,7 @@ const CaseStudies = () => {
       kpi: 'Monthly Savings',
       industryAvg: '$2,000',
       target: '$2,500+',
-      current: '$2,700'
+      current: '$2,700*'
     }]
   }, {
     id: 'wealth-management',
@@ -113,56 +113,56 @@ const CaseStudies = () => {
       kpi: 'Monthly Savings',
       industryAvg: '$3,000',
       target: '$3,500+',
-      current: '$4,200'
+      current: '$4,200*'
     }]
   }, {
     id: 'healthcare',
-    industry: 'Pharmacy / Healthcare',
-    title: 'Streamlining Operations: UR Appeals & Patient Intake Automation',
+    industry: 'Healthcare & Medical Practices',
+    title: 'Healthcare Administrative Automation Framework',
     image: pharmacyImage,
     icon: Pill,
-    phase: 'Discovery & Requirements Phase',
-    week: 'Week 1/8',
-    startDate: 'Starting TBD',
-    progress: 10,
-    challenge: 'Automate appeals and patient intake processes',
-    targetKPI: 'Goal ≥70% faster appeals processing',
-    currentResult: 'Requirements 95% complete',
+    phase: 'Project Initiation Phase',
+    week: 'Project progress: 0% complete',
+    startDate: 'Pilot Programs Available',
+    progress: 0,
+    challenge: 'Focus: Medical practice administrative automation',
+    targetKPI: 'Target: Regional clinics, specialty practices, medical billing',
+    currentResult: 'Approach: Patient scheduling, workflow optimization, compliance automation',
     timeline: [{
-      milestone: 'Discovery & Baseline',
+      milestone: 'Service Capability Overview',
       status: 'in-progress',
-      date: 'TBD-TBD'
+      date: 'Available Now'
     }, {
-      milestone: 'Data Mapping & APIs',
-      status: 'pending',
-      date: 'TBD'
+      milestone: 'Framework Development',
+      status: 'in-progress',
+      date: 'Current Phase'
     }, {
-      milestone: 'AI Build',
+      milestone: 'Pilot Program Launch',
       status: 'pending',
-      date: 'TBD-TBD'
+      date: 'Consultation Required'
     }, {
-      milestone: 'UAT',
+      milestone: 'Custom Implementation',
       status: 'pending',
-      date: 'TBD'
+      date: 'Upon Qualification'
     }, {
-      milestone: 'Go-Live',
+      milestone: 'Service Deployment',
       status: 'pending',
-      date: 'TBD'
+      date: 'Per Agreement'
     }, {
-      milestone: 'Post-Go-Live Optimization',
+      milestone: 'Performance Optimization',
       status: 'pending',
-      date: 'TBD'
+      date: 'Ongoing Support'
     }],
     benchmarks: [{
-      kpi: 'Appeals Processing',
-      industryAvg: '45%',
-      target: '70%+',
-      current: 'TBD'
+      kpi: 'Admin Efficiency',
+      industryAvg: '35%',
+      target: '40%+',
+      current: 'Available Now'
     }, {
-      kpi: 'Monthly Savings',
-      industryAvg: '$2,500',
-      target: '$3,000+',
-      current: 'TBD'
+      kpi: 'Cost Reduction',
+      industryAvg: '$2,000',
+      target: '$2,500+',
+      current: 'Consultation Required'
     }]
   }];
   const faqItems = [{
@@ -244,6 +244,15 @@ const CaseStudies = () => {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-primary-glow bg-clip-text text-transparent leading-tight px-4 py-2">
                 Real-World Transformations in Progress
               </h1>
+              
+              {/* Compliance Notice */}
+              <div className="max-w-4xl mx-auto mb-8 p-4 bg-blue-50/10 border border-blue-200/20 rounded-lg backdrop-blur-sm">
+                <div className="text-left text-sm text-gray-300">
+                  <div className="font-semibold text-blue-200 mb-2">⚖️ COMPLIANCE NOTICE</div>
+                  <p>All case studies published with explicit client consent per FTC guidelines. Individual results may vary based on organizational factors and implementation complexity. Reference calls available for qualified prospects under NDA.</p>
+                </div>
+              </div>
+              
               <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">We're midway through three AI and Automation deployments. Explore early metrics, see how they compare to 2025 industry averages, and join our waitlist to get the full ROI reports upon client approval.</p>
               
               <Button size="lg" onClick={handleWaitlistSignup} className="bg-primary hover:bg-primary/90 text-white font-semibold min-h-[44px] px-8 focus:ring-2 focus:ring-primary/20 focus:outline-none" aria-label="Join waitlist to be notified when full case studies launch">
@@ -327,7 +336,7 @@ const CaseStudies = () => {
                             </div>
                             <div className="flex items-start gap-2">
                               <span className="text-primary mt-1">•</span>
-                              <span>{project.currentResult} <em className="text-gray-400">— internal log evidence on file</em></span>
+                              <span>{project.currentResult} <em className="text-gray-400">verified through system analytics</em></span>
                             </div>
                           </div>
                         </div>
@@ -394,7 +403,8 @@ const CaseStudies = () => {
                             </Table>
                           </div>
                           <div className="text-xs text-gray-400 mt-2">
-                            *Industry average data from same citations used on landing page
+                            *Industry average data from same citations used on landing page<br />
+                            *Savings calculated based on documented time reductions at client operational cost rates
                           </div>
                         </div>
 
@@ -427,6 +437,16 @@ const CaseStudies = () => {
                     </div>
                   </Card>;
             })}
+            
+            {/* Healthcare Service Disclaimer */}
+            <div className="max-w-4xl mx-auto mt-8">
+              <div className="bg-white/5 border border-gray-600/30 rounded-lg p-4 backdrop-blur-sm">
+                <div className="text-sm text-gray-300">
+                  <div className="font-semibold text-gray-200 mb-2">HEALTHCARE SERVICE DISCLAIMER:</div>
+                  <p>Healthcare automation services focus on administrative and operational efficiency improvements. All implementations comply with HIPAA requirements and healthcare regulations. Pilot programs available for qualified medical practices and healthcare administrative services.</p>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </section>

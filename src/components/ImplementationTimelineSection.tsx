@@ -1,4 +1,3 @@
-
 import { Calendar, Cog, TestTube, Rocket } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 const ImplementationTimelineSection = () => {
@@ -87,9 +86,7 @@ const ImplementationTimelineSection = () => {
         <div className="mt-8 sm:mt-12 text-center bg-elevate-accent rounded-2xl p-4 sm:p-6 lg:p-8 text-white">
           <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Ready for Rapid Implementation?</h3>
           <p className="text-sm sm:text-base text-gray-200 mb-4 sm:mb-6 max-w-2xl mx-auto leading-relaxed">Start your automation journey today with our proven implementation process.</p>
-          <div className="text-base sm:text-lg font-semibold text-white">
-            Total Timeline: 2-4 weeks from start to finish
-          </div>
+          <div className="text-base sm:text-lg font-semibold text-white">Total Timeline: 2-6 weeks from start to finish</div>
         </div>
       </div>
     </section>;

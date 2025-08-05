@@ -37,7 +37,7 @@ const serviceOptions: ServiceOption[] = [
   },
   {
     id: 'ai-enterprise',
-    name: 'AI Enterprise Plan',
+    name: 'AI Premium Plan',
     description: 'Full AI ecosystem, predictive analytics, dedicated support',
     basePrice: 9999,
     monthlyPrice: 999,

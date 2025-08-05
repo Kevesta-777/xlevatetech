@@ -46,17 +46,17 @@ export const industries: Industry[] = [
     subtitle: "EMR Optimization & Patient Journey Automation",
     description: "Enhance patient care and operational efficiency with intelligent EMR integration, automated clinical workflows, and AI-powered patient engagement solutions.",
     bulletPoints: [
-      "Seamless EMR integration and clinical workflow optimization",
-      "AI-powered utilization review and appeals processing automation",
-      "Intelligent patient intake and appointment scheduling systems",
-      "Automated regulatory submission and compliance documentation",
-      "Real-time clinical decision support and outcome tracking"
+      "Medical practice workflow automation and patient scheduling optimization",
+      "Administrative process automation for billing and documentation",
+      "Patient communication and appointment reminder systems",
+      "Compliance documentation and regulatory reporting automation",
+      "Practice management system integration and optimization"
     ],
     icon: Heart,
     exampleClients: ["Cleveland Clinic", "Kaiser Permanente", "Teladoc Health", "Pfizer", "Johnson & Johnson", "Regional healthcare networks"],
     gradient: "from-red-500 to-pink-600",
     color: "#ef4444",
-    professionalExample: "Developing UR appeals engine and AI intake bot system projected to achieve 70% faster appeals processing, 80% faster patient intake, and $30K+ cost reduction with improved tracking.",
+    professionalExample: "We are actively expanding our service offerings into new industries and technology domains in Q4 2025.",
     highResImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80",
     caseStudyLink: "/case-studies#healthcare"
   },

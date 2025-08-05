@@ -348,7 +348,7 @@ const Blog = () => {
                     value="latest" 
                     className="data-[state=active]:bg-elevate-accent data-[state=active]:text-white text-wrap md:font-medium text-gray-300 h-16 sm:h-14 md:h-12"
                   >
-                    Latest Articles ({latestArticles.length})
+                      Latest Articles ({latestArticles.length})
                   </TabsTrigger>
                   {/* Separator */}
                   <span className="hidden sm:inline-block h-8 border-l border-elevate-accent/20 mx-2 self-center" aria-hidden="true" />

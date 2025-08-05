@@ -375,7 +375,7 @@ const ROICalculator = () => {
                       <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
                         <td className="py-4 px-4 font-medium">Time Reduction</td>
                         <td className="text-center py-4 px-4">45-70%</td>
-                        <td className="text-center py-4 px-4">55-75%</td>
+                        <td className="text-center py-4 px-4">45-65%</td>
                         <td className="text-center py-4 px-4">40-65%</td>
                       </tr>
                       <tr className="border-b border-white/10 hover:bg-white/5 transition-colors">
@@ -446,7 +446,7 @@ const ROICalculator = () => {
                   <div className="flex items-center gap-3 mb-4">
                     <HeartPulse className="h-12 w-12 sm:w-8 sm:h-8 text-[#00C9A7] group-hover:scale-110 transition-transform" />
                     <div>
-                      <h3 className="text-[#00C9A7] font-bold text-lg">Pharmacy</h3>
+                      <h3 className="text-[#00C9A7] font-bold text-lg">Healthcare</h3>
                       <span className="text-xs text-gray-400">40% ROI</span>
                     </div>
                   </div>

@@ -8,10 +8,10 @@ interface SocialMediaIconsProps {
 export const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({ className = "" }) => {
   const socialLinks = [
     {
-      name: 'LinkedIn - Raj Dalal',
-      url: 'https://www.linkedin.com/in/rajdalal1/',
+      name: 'LinkedIn - Xlevate Tech',
+      url: 'https://linkedin.com/company/xlevate-tech',
       icon: 'icon-linkedin',
-      ariaLabel: 'Visit Raj Dalal\'s LinkedIn profile'
+      ariaLabel: 'Follow Xlevate Tech company on LinkedIn'
     },
     {
       name: 'X (Twitter)',
@@ -27,7 +27,7 @@ export const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({ className = 
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/xlevatetech',
+      url: 'https://www.instagram.com/xlevatetech/',
       icon: 'icon-instagram',
       ariaLabel: 'Follow @xlevatetech on Instagram'
     }

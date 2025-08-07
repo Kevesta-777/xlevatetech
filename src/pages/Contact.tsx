@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -11,43 +10,38 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   useEffect(() => {
     // Set document title
     document.title = "Contact - Xlevate Tech | Start Your Automation Journey";
-    
+
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Get your free automation consultation with Xlevate Tech. Transform your operations with AI and process automation solutions.');
     }
   }, []);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
     toast({
       title: "Message Sent Successfully!",
-      description: "We'll get back to you within 24 hours with your free consultation details.",
+      description: "We'll get back to you within 24 hours with your free consultation details."
     });
-    
     setIsSubmitting(false);
-    
+
     // Reset form
     const form = e.target as HTMLFormElement;
     form.reset();
   };
-
-  return (
-    <div className="min-h-screen bg-elevate-dark">
+  return <div className="min-h-screen bg-elevate-dark">
       <header>
         <Navbar />
       </header>
@@ -79,14 +73,7 @@ const Contact = () => {
                     <Label htmlFor="name" className="text-white font-medium">
                       Name <span className="text-red-400">*</span>
                     </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent"
-                      placeholder="Your full name"
-                    />
+                    <Input id="name" name="name" type="text" required className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent" placeholder="Your full name" />
                   </div>
 
                   {/* Business Email Field */}
@@ -94,14 +81,7 @@ const Contact = () => {
                     <Label htmlFor="email" className="text-white font-medium">
                       Business Email <span className="text-red-400">*</span>
                     </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent"
-                      placeholder="your.email@company.com"
-                    />
+                    <Input id="email" name="email" type="email" required className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent" placeholder="your.email@company.com" />
                   </div>
 
                   {/* Company Field */}
@@ -109,14 +89,7 @@ const Contact = () => {
                     <Label htmlFor="company" className="text-white font-medium">
                       Company <span className="text-red-400">*</span>
                     </Label>
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      required
-                      className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent"
-                      placeholder="Your company name"
-                    />
+                    <Input id="company" name="company" type="text" required className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent" placeholder="Your company name" />
                   </div>
 
                   {/* Phone Field */}
@@ -124,13 +97,7 @@ const Contact = () => {
                     <Label htmlFor="phone" className="text-white font-medium">
                       Phone <span className="text-gray-400">(optional)</span>
                     </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent"
-                      placeholder="(555) 123-4567"
-                    />
+                    <Input id="phone" name="phone" type="tel" className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent" placeholder="(555) 123-4567" />
                   </div>
 
                   {/* Industry Dropdown */}
@@ -175,13 +142,7 @@ const Contact = () => {
                     <Label htmlFor="message" className="text-white font-medium">
                       Describe your biggest operational challenge
                     </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent resize-none"
-                      placeholder="Tell us about the operational bottlenecks, manual processes, or inefficiencies that are costing your business time and money..."
-                    />
+                    <Textarea id="message" name="message" rows={4} className="bg-elevate-dark/80 border-elevate-accent/30 text-white placeholder-gray-400 focus:border-elevate-accent resize-none" placeholder="Tell us about the operational bottlenecks, manual processes, or inefficiencies that are costing your business time and money..." />
                   </div>
 
                   {/* Privacy Policy Notice */}
@@ -190,11 +151,7 @@ const Contact = () => {
                   </div>
 
                   {/* Submit Button */}
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-elevate-accent hover:bg-elevate-accent-light text-white py-3 px-6 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:transform-none"
-                  >
+                  <Button type="submit" disabled={isSubmitting} className="w-full bg-elevate-accent hover:bg-elevate-accent-light text-white py-3 px-6 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:transform-none">
                     {isSubmitting ? "Sending..." : "Request a Proposal"}
                   </Button>
 
@@ -220,18 +177,12 @@ const Contact = () => {
                   <h3 className="text-2xl font-bold text-white mb-6">Direct Contact</h3>
                   
                   <div className="space-y-4">
-                    <a 
-                      href="mailto:raj.dalal@xlevatetech.com"
-                      className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group"
-                    >
+                    <a href="mailto:raj.dalal@xlevatetech.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group">
                       <Mail className="h-5 w-5 text-elevate-accent group-hover:scale-110 transition-transform duration-300" />
                       <span className="font-medium">raj.dalal@xlevatetech.com</span>
                     </a>
                     
-                    <a 
-                      href="tel:+18479210915"
-                      className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group"
-                    >
+                    <a href="tel:+18479210915" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group">
                       <Phone className="h-5 w-5 text-elevate-accent group-hover:scale-110 transition-transform duration-300" />
                       <span className="font-medium">847-921-0915</span>
                     </a>
@@ -275,7 +226,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="text-white font-semibold mb-1">Proven Results</h4>
-                        <p className="text-gray-400 text-sm">30+ hours saved monthly for our clients</p>
+                        <p className="text-gray-400 text-sm">20+ hours saved monthly for our clients</p>
                       </div>
                     </div>
                     
@@ -295,7 +246,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h4 className="text-white font-semibold mb-1">Rapid Implementation</h4>
-                        <p className="text-gray-400 text-sm">See results in 2-4 weeks with our agile approach</p>
+                        <p className="text-gray-400 text-sm">See results in 2-6 weeks with our agile approach</p>
                       </div>
                     </div>
                   </div>
@@ -317,8 +268,6 @@ const Contact = () => {
         <Footer />
       </footer>
       <ScrollToTop />
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;

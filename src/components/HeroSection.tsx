@@ -10,7 +10,6 @@ const HeroSection = () => {
   const handleROICalculator = () => {
     window.location.href = '/automation-roi-calculator';
   };
-
   return <section id="hero" className="hero-section relative min-h-[100vh] flex items-center justify-center bg-elevate-dark text-white overflow-hidden" style={{
     marginTop: 0,
     paddingTop: 'clamp(80px, 15vw, 120px)'
@@ -56,7 +55,7 @@ const HeroSection = () => {
               <div className="bg-elevate-dark/30 border border-gray-700/30 rounded-lg p-3 sm:p-4 text-center min-h-[100px] flex flex-col justify-center relative">
                 <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-elevate-accent to-transparent"></div>
                 <Calendar className="w-12 h-12 sm:w-6 sm:h-6 mx-auto mb-2 text-elevate-accent" />
-                <div className="text-xl sm:text-2xl font-bold text-white">2-4 Weeks</div>
+                <div className="text-xl sm:text-2xl font-bold text-white">2-6 Weeks</div>
 
                 <div className="text-xs sm:text-sm text-gray-300">Implementation</div>
                 <div className="text-xs text-gray-400 mt-1">Seamless setup</div>

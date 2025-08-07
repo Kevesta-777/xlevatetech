@@ -183,8 +183,8 @@ const CaseStudies = () => {
     alert('Waitlist signup functionality to be implemented');
 
     // GA4 tracking
-    if (typeof window !== 'undefined' && (window as Window).gtag) {
-      (window as Window).gtag('event', 'WaitlistSignup', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'WaitlistSignup', {
         event_category: 'engagement',
         event_label: 'case_studies_waitlist'
       });
@@ -194,8 +194,8 @@ const CaseStudies = () => {
     setExpandedTimeline(expandedTimeline === projectId ? null : projectId);
 
     // GA4 tracking
-    if (typeof window !== 'undefined' && (window as Window).gtag) {
-      (window as Window).gtag('event', 'TimelineAccordionOpen', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'TimelineAccordionOpen', {
         event_category: 'engagement',
         event_label: projectId
       });
@@ -208,8 +208,8 @@ const CaseStudies = () => {
     window.open('https://calendly.com/raj-dalal-xlevatetech', '_blank');
 
     // GA4 tracking
-    if (typeof window !== 'undefined' && (window as Window).gtag) {
-      (window as Window).gtag('event', 'BookNowClick', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'BookNowClick', {
         event_category: 'engagement',
         event_label: 'case_studies_cta_banner'
       });
@@ -253,7 +253,7 @@ const CaseStudies = () => {
                 </div>
               </div>
               
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">We're midway through three AI and Automation deployments. Explore early metrics, see how they compare to 2025 industry averages, and join our waitlist to get the full ROI reports upon client approval.</p>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">We're midway through two AI and Automation deployments. Explore early metrics, see how they compare to 2025 industry averages, and join our waitlist to get the full ROI reports upon client approval.</p>
               
               <Button size="lg" onClick={handleWaitlistSignup} className="bg-primary hover:bg-primary/90 text-white font-semibold min-h-[44px] px-8 focus:ring-2 focus:ring-primary/20 focus:outline-none" aria-label="Join waitlist to be notified when full case studies launch">
                 Notify Me at Launch

@@ -37,10 +37,32 @@ const About = () => {
               <div className="max-w-4xl mx-auto space-y-6">
                 <p className="text-xl text-gray-300 leading-relaxed md:text-2xl font-thin text-left">With over a decade optimizing complex business processes for companies of all sizes, Raj founded Xlevate Tech to deliver proven automation strategies with personal attention. Having streamlined operations at fast-growing companies like Bswift and Bounteous, Raj brings that same expertise directly to your business—without the overhead and delays of large consulting teams.</p>
                 <div className="bg-gradient-to-r from-elevate-accent/20 to-elevate-accent/10 border border-elevate-accent/30 rounded-xl p-6 mt-8">
-                  <p className="text-lg md:text-xl text-white font-semibold">
-                    The automation specialist who turns your biggest time-wasting processes into your competitive advantage. 
-                    <span className="text-elevate-accent font-thin"> </span>
-                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
+                      <p className="text-base md:text-lg text-white font-medium">
+                        Reduce operational costs by 30-60% in the first 90 days
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
+                      <p className="text-base md:text-lg text-white font-medium">
+                        Eliminate repetitive tasks that drain your team's productivity
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
+                      <p className="text-base md:text-lg text-white font-medium">
+                        Scale operations seamlessly without proportional staff increases
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
+                      <p className="text-base md:text-lg text-white font-medium">
+                        Get measurable ROI with transparent reporting and benchmarks
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,15 +129,15 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
-                  From Enterprise Experience to{" "}
-                  <span className="text-elevate-accent">Automation Mastery</span>
+                  From Operations Troubleshooter to{" "}
+                  <span className="text-elevate-accent">Automation Architect</span>
                 </h2>
                 <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
                   <p className="font-thin text-xl">Raj's career began solving operational puzzles in property accounting, working with intricate systems and multi-layered workflows. After joining dynamic teams at companies like Bswift and Bounteous, he saw the same pattern everywhere: talented people spending too much time on repetitive tasks that could be automated.</p>
 
                   <p className="font-thin text-xl">The breakthrough came when Raj realized that the sophisticated automation strategies used by large organizations could be adapted and delivered much faster for growing businesses. That's when he founded Xlevate Tech, to bring proven automation solutions without the complexity, bureaucracy, or high costs typically associated with large-scale implementations.</p>
 
-                  <p className="font-thin text-xl">Today at Xlevate Tech, Raj combines operational expertise with cutting-edge AI to deliver measurable automation results. The focus is simple: eliminate the repetitive tasks that drain your team's energy so they can focus on what drives real growth.</p>
+                  <p className="font-thin text-xl">Today at Xlevate Tech, Raj combines operational expertise with cutting-edge AI to deliver measurable automation results. The focus is simple: eliminate the repetitive tasks that drain your team's energy so they can focus on what drives real growth and real ROI in 30/60/90 days.</p>
                 </div>
               </div>
               <div className="text-center">
@@ -138,7 +160,7 @@ const About = () => {
                   
                   {/* Single Contact Option */}
                   <div className="flex justify-center">
-                    <a href="https://www.linkedin.com/in/raj-dalal-xlevate" target="_blank" rel="noopener noreferrer me" className="p-3 bg-elevate-dark/50 hover:bg-elevate-accent/20 border border-elevate-accent/20 hover:border-elevate-accent/40 rounded-lg transition-all duration-300" aria-label="Connect with Raj on LinkedIn">
+                    <a href="https://www.linkedin.com/in/rajdalal1/" target="_blank" rel="noopener noreferrer me" className="p-3 bg-elevate-dark/50 hover:bg-elevate-accent/20 border border-elevate-accent/20 hover:border-elevate-accent/40 rounded-lg transition-all duration-300" aria-label="Connect with Raj on LinkedIn">
                       <Linkedin className="h-5 w-5 text-elevate-accent" />
                     </a>
                   </div>
@@ -322,7 +344,6 @@ const About = () => {
       <Footer />
       <ScrollToTop />
       {/* <EnhancedXlevateScout /> */}
-    </div>
+    </div>;
 };
-
 export default About;

@@ -23,7 +23,7 @@ const StartupCredibilitySection = () => {
       icon: Target,
       title: "Active Client Base",
       description: "Currently serving clients across finance, healthcare, and real estate",
-      metric: "3+ active clients",
+      metric: "2+ Active Clients",
       highlight: "Growing portfolio"
     },
     {

@@ -37,32 +37,10 @@ const About = () => {
               <div className="max-w-4xl mx-auto space-y-6">
                 <p className="text-xl text-gray-300 leading-relaxed md:text-2xl font-thin text-left">With over a decade optimizing complex business processes for companies of all sizes, Raj founded Xlevate Tech to deliver proven automation strategies with personal attention. Having streamlined operations at fast-growing companies like Bswift and Bounteous, Raj brings that same expertise directly to your business—without the overhead and delays of large consulting teams.</p>
                 <div className="bg-gradient-to-r from-elevate-accent/20 to-elevate-accent/10 border border-elevate-accent/30 rounded-xl p-6 mt-8">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
-                      <p className="text-base md:text-lg text-white font-medium">
-                        Reduce operational costs by 30-60% in the first 90 days
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
-                      <p className="text-base md:text-lg text-white font-medium">
-                        Eliminate repetitive tasks that drain your team's productivity
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
-                      <p className="text-base md:text-lg text-white font-medium">
-                        Scale operations seamlessly without proportional staff increases
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-elevate-accent mt-1 flex-shrink-0" />
-                      <p className="text-base md:text-lg text-white font-medium">
-                        Get measurable ROI with transparent reporting and benchmarks
-                      </p>
-                    </div>
-                  </div>
+                  <p className="text-lg md:text-xl text-white font-semibold">
+                    The automation specialist who turns your biggest time-wasting processes into your competitive advantage and eliminating repetitive tasks that drain your team's productivity.
+                    <span className="text-elevate-accent font-thin"> </span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -154,9 +132,7 @@ const About = () => {
                   <p className="text-elevate-accent font-medium mb-4">
                     Founder & Principal Consultant, Xlevate Tech
                   </p>
-                  <p className="text-gray-300 italic mb-6">
-                    "Build for smarter systems. Focused on real growth."
-                  </p>
+                  <p className="text-gray-300 italic mb-6">"Smarter systems, real growth, measurable results – that's the Xlevate way."</p>
                   
                   {/* Single Contact Option */}
                   <div className="flex justify-center">
@@ -215,7 +191,7 @@ const About = () => {
               {/* Fixed-Fee Pricing */}
               <div className="bg-gradient-to-br from-elevate-dark to-elevate-dark/50 border border-elevate-accent/20 rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-white mb-4">Transparent Pricing</h3>
-                <p className="text-gray-300 mb-4">Fixed-fee pricing with no billing surprises. You know exactly what you're investing in uprfront and what you'll get in return.</p>
+                <p className="text-gray-300 mb-4">Most projects completed in 2-6 weeks vs. industry standard 8-12 weeks. If we don't meet timeline commitments, additional support is provided at no charge.</p>
                 <div className="flex items-center text-elevate-accent">
                   <Check className="h-5 w-5 mr-2" />
                   <span className="font-medium">Typical savings: 40-60% below large consulting firms</span>
@@ -234,30 +210,34 @@ const About = () => {
             </h2>
             <div className="bg-gradient-to-br from-elevate-dark to-elevate-dark/50 border border-elevate-accent/20 rounded-2xl p-8">
               <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Raised in Uptown Chicago and rooted in Skokie, I've always been wired to break things down, understand how they work, and build them back better. 
-                When not optimizing systems, you'll find me:
+                Based in Chicago, it all started with gaming as a kid and grew stronger after that first dial-up internet connection. I've been fascinated with technology, space, and weather ever since—funny how I wanted to chase storms as a kid, now I just complain about the weather like everyone else. Raised during the legendary Bulls era witnessing MJ play live, I learned about excellence, rhythm, and energy that still shapes how I show up in work and life.
+              </p>
+              <p className="text-lg text-gray-300 mb-4 font-semibold">
+                What Drives Me Beyond Work:
               </p>
               <ul className="space-y-3 text-gray-300 mb-6">
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Exploring Chicago's food scene and experimenting with bold home cooking</span>
+                  <span>Basketball, soccer, salsa and breakdancing - whatever keeps me moving because I hate running</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Staying active through fitness and chasing my sweet goldendoodle Bentley</span>
+                  <span>Traveling and trying every ethnic food and dessert - always hunting for the next flavor adventure and recreating foods that are way too spicy</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Discovering new places with family and friends, exploring the outdoors</span>
+                  <span>Gaming, sci-fi flicks, and motivational podcasts paired with watching boxing or UFC for that competitive energy and rhythm</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Winding down with great sci-fi flicks and motivational podcasts</span>
+                  <span>Spending quality time with family, friends, and Bentley - my sweet goofy goldendoodle</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
+                  <span>Figuring out how to always give back to the community - whether it's volunteering or supporting any small business I truly believe in, since it's now my vision and reality</span>
                 </li>
               </ul>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                My diverse experiences help me understand the human side of operations because technology should serve people, not the reverse.
-              </p>
+              <p className="text-lg text-gray-300 leading-relaxed">My diverse experiences help me understand the human side of operations because technology should serve people, not the reverse. My journey from hands-on operations to automation expert gives me insights that pure technology consultants simply can't provide. And no matter where life takes me, there's still no place that compares to Summertime Chi.</p>
             </div>
           </div>
         </section>
@@ -275,9 +255,7 @@ const About = () => {
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-elevate-accent transition-colors">
                   Explore Services
                 </h3>
-                <p className="text-gray-300 mb-4">
-                  Discover my automation services and pricing packages
-                </p>
+                <p className="text-gray-300 mb-4">Discover automation services and pricing packages fit for you</p>
                 <div className="flex items-center text-elevate-accent">
                   <AnimatedArrow size={16} />
                 </div>
@@ -287,9 +265,7 @@ const About = () => {
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-elevate-accent transition-colors">
                   View Results
                 </h3>
-                <p className="text-gray-300 mb-4">
-                  See current client implementations and success stories
-                </p>
+                <p className="text-gray-300 mb-4">See current pending client implementations and success stories</p>
                 <div className="flex items-center text-elevate-accent">
                   <AnimatedArrow size={16} />
                 </div>
@@ -311,9 +287,7 @@ const About = () => {
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-elevate-accent transition-colors">
                   Get Started
                 </h3>
-                <p className="text-gray-300 mb-4">
-                  Schedule a consultation to discuss your automation needs
-                </p>
+                <p className="text-gray-300 mb-4">Schedule a consultation to discuss your AI and automation needs</p>
                 <div className="flex items-center text-elevate-accent">
                   <AnimatedArrow size={16} />
                 </div>

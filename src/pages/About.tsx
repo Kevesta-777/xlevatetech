@@ -257,7 +257,7 @@ const About = () => {
                 </h3>
                 <p className="text-gray-300 mb-4">Discover automation services and pricing packages fit for you</p>
                 <div className="flex items-center text-elevate-accent">
-                  <AnimatedArrow size={16} />
+                  <AnimatedArrow size={24} />
                 </div>
               </a>
 
@@ -267,7 +267,7 @@ const About = () => {
                 </h3>
                 <p className="text-gray-300 mb-4">See current pending client implementations and success stories</p>
                 <div className="flex items-center text-elevate-accent">
-                  <AnimatedArrow size={16} />
+                  <AnimatedArrow size={24} />
                 </div>
               </a>
 
@@ -279,7 +279,7 @@ const About = () => {
                   Estimate your potential automation ROI and time savings
                 </p>
                 <div className="flex items-center text-elevate-accent">
-                  <AnimatedArrow size={16} />
+                  <AnimatedArrow size={24} />
                 </div>
               </a>
 
@@ -289,7 +289,7 @@ const About = () => {
                 </h3>
                 <p className="text-gray-300 mb-4">Schedule a consultation to discuss your AI and automation needs</p>
                 <div className="flex items-center text-elevate-accent">
-                  <AnimatedArrow size={16} />
+                  <AnimatedArrow size={24} />
                 </div>
               </a>
             </div>

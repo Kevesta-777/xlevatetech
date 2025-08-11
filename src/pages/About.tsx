@@ -209,24 +209,22 @@ const About = () => {
               <span className="text-elevate-accent">Solutions</span>
             </h2>
             <div className="bg-gradient-to-br from-elevate-dark to-elevate-dark/50 border border-elevate-accent/20 rounded-2xl p-8">
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Based in Chicago, it all started with gaming as a kid and grew stronger after that first dial-up internet connection. I've been fascinated with technology, space, and weather ever since—funny how I wanted to chase storms as a kid, now I just complain about the weather like everyone else. Raised during the legendary Bulls era witnessing MJ play live, I learned about excellence, rhythm, and energy that still shapes how I show up in work and life.
-              </p>
+              <p className="text-lg text-gray-300 mb-6 leading-relaxed">Based in Chicago, my journey started as a kid captivated by gaming and sparked by that first dial-up internet connection. Since then, technology, space, and weather have continued to fuel my curiosity. Funny enough, I went from wanting to chase storms as a child to now just complaining about the weather like everyone else. Growing up during the legendary Bulls era and watching MJ play live taught me important lessons about excellence, rhythm, and relentless energy—qualities that still guide how I approach both work and life every day.</p>
               <p className="text-lg text-gray-300 mb-4 font-semibold">
                 What Drives Me Beyond Work:
               </p>
               <ul className="space-y-3 text-gray-300 mb-6">
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Basketball, soccer, salsa and breakdancing - whatever keeps me moving because I hate running</span>
+                  <span>Basketball, soccer, salsa and breakdancing - whatever keeps me moving because running is not my thing</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Traveling and trying every ethnic food and dessert - always hunting for the next flavor adventure and recreating foods that are way too spicy</span>
+                  <span>Exploring new cultures through travel and tasting every ethnic food and dessert I can find. I'm always chasing the next bold flavor and daring to recreate dishes way too spicy</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Gaming, sci-fi flicks, and motivational podcasts paired with watching boxing or UFC for that competitive energy and rhythm</span>
+                  <span>Diving into gaming, sci-fi, and motivational podcasts, while soaking in the intensity and rhythm of boxing and martial arts for that competitive edge</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
@@ -234,10 +232,10 @@ const About = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-elevate-accent mt-1 flex-shrink-0" />
-                  <span>Figuring out how to always give back to the community - whether it's volunteering or supporting any small business I truly believe in, since it's now my vision and reality</span>
+                  <span>Finding ways to give back to the community, whether through volunteering or supporting small businesses I truly believe in, is now both my vision and my reality</span>
                 </li>
               </ul>
-              <p className="text-lg text-gray-300 leading-relaxed">My diverse experiences help me understand the human side of operations because technology should serve people, not the reverse. My journey from hands-on operations to automation expert gives me insights that pure technology consultants simply can't provide. And no matter where life takes me, there's still no place that compares to Summertime Chi.</p>
+              <p className="text-lg text-gray-300 leading-relaxed">My experiences have shown me that technology should serve people, not the other way around. Traveling and meeting entrepreneurs taught me that real growth comes from embracing discomfort and pushing through challenges. This journey from hands-on operations to founding Xlevate Tech has helped me find my true purpose: using automation to empower others. And no matter where I go, Summertime Chi will always be my home and my inspiration.</p>
             </div>
           </div>
         </section>

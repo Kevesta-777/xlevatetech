@@ -593,9 +593,9 @@ const Services = () => {
         </section>
       </main>
 
-      {/* <EnhancedXlevateScout /> */}
       <Footer />
       <ScrollToTop />
+      <EnhancedXlevateScout />
     </div>;
 };
 export default Services;

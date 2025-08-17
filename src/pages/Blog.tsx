@@ -14,7 +14,7 @@ import { PopularResources } from '@/components/blog/PopularResources';
 import { NewsletterSignup } from '@/components/blog/NewsletterSignup';
 import { ErrorBoundary } from '@/components/blog/ErrorBoundary';
 import { useSupabaseWithFallback } from '@/hooks/useSupabaseWithFallback';
-
+import { EnhancedXlevateScout } from '@/components/EnhancedXlevateScout';
 interface BlogPost {
   id: string;
   title: string;
@@ -454,6 +454,7 @@ const Blog = () => {
 
       <Footer />
       <ScrollToTop />
+      <EnhancedXlevateScout/>
     </div>
   );
 };

@@ -9,10 +9,10 @@ import UrgencySection from "@/components/UrgencySection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import { XlevateScout } from "@/components/XlevateScout";
 import { SEOOptimizer } from "@/components/blog/SEOOptimizer";
 import FAQSchema from "@/components/FAQSchema";
 import { useEffect } from "react";
+import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
 
 const Index = () => {
   useEffect(() => {
@@ -24,8 +24,8 @@ const Index = () => {
       console.log(`Page load time: ${loadTime.toFixed(2)}ms`);
       
       // Track page view in analytics
-      if (typeof (window as any).gtag !== 'undefined') {
-        (window as any).gtag('event', 'page_view', {
+      if (typeof (window as unknown as { gtag?: unknown }).gtag !== 'undefined') {
+        (window as unknown as { gtag: (event: string, action: string, params: Record<string, unknown>) => void }).gtag('event', 'page_view', {
           page_title: 'Xlevate Tech - AI Automation Solutions',
           page_location: window.location.href,
           load_time: Math.round(loadTime)
@@ -83,7 +83,7 @@ const Index = () => {
       </footer>
       
       <ScrollToTop />
-      {/* <XlevateScout /> */}
+        <EnhancedXlevateScout />
     </div>
   );
 };

@@ -741,6 +741,84 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          id: string
+          created_at: string
+          first_name: string | null
+          last_name: string | null
+          email: string | null
+          phone: string | null
+          company_name: string | null
+          industry_sector: string | null
+          location: string | null
+          company_size: string | null
+          website_url: string | null
+          role_title: string | null
+          social_links: string | null
+          pain_points: string | null
+          budget_timeline: string | null
+          notes: string | null
+          score: number | null
+          stage: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
+          source: 'form' | 'chatbot' | 'linkedin' | 'email'
+          campaign_id: string | null
+          last_contacted_at: string | null
+          calendly_link: string | null
+          opt_out: boolean
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          first_name?: string | null
+          last_name?: string | null
+          email?: string | null
+          phone?: string | null
+          company_name?: string | null
+          industry_sector?: string | null
+          location?: string | null
+          company_size?: string | null
+          website_url?: string | null
+          role_title?: string | null
+          social_links?: string | null
+          pain_points?: string | null
+          budget_timeline?: string | null
+          notes?: string | null
+          score?: number | null
+          stage?: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
+          source: 'form' | 'chatbot' | 'linkedin' | 'email'
+          campaign_id?: string | null
+          last_contacted_at?: string | null
+          calendly_link?: string | null
+          opt_out?: boolean
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          first_name?: string | null
+          last_name?: string | null
+          email?: string | null
+          phone?: string | null
+          company_name?: string | null
+          industry_sector?: string | null
+          location?: string | null
+          company_size?: string | null
+          website_url?: string | null
+          role_title?: string | null
+          social_links?: string | null
+          pain_points?: string | null
+          budget_timeline?: string | null
+          notes?: string | null
+          score?: number | null
+          stage?: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
+          source?: 'form' | 'chatbot' | 'linkedin' | 'email'
+          campaign_id?: string | null
+          last_contacted_at?: string | null
+          calendly_link?: string | null
+          opt_out?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -792,7 +870,8 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      lead_stage: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
+      lead_source: 'form' | 'chatbot' | 'linkedin' | 'email'
     }
     CompositeTypes: {
       [_ in never]: never
@@ -919,6 +998,20 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      lead_stage: {
+        captured: 'captured',
+        qualified: 'qualified',
+        disqualified: 'disqualified',
+        contacted: 'contacted',
+        meeting_booked: 'meeting_booked'
+      },
+      lead_source: {
+        form: 'form',
+        chatbot: 'chatbot',
+        linkedin: 'linkedin',
+        email: 'email'
+      }
+    },
   },
 } as const

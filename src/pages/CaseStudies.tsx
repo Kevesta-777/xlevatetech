@@ -9,7 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowRight, ExternalLink, TrendingUp, Users, DollarSign, Clock, CheckCircle, AlertCircle, Building, Bot, Pill } from 'lucide-react';
-
+import { EnhancedXlevateScout } from '@/components/EnhancedXlevateScout';
 // Import case study images
 import realEstateImage from '@/assets/real-estate-case-study.jpg';
 import wealthManagementImage from '@/assets/wealth-management-case-study.jpg';
@@ -497,6 +497,7 @@ const CaseStudies = () => {
       </div>
       
       <Footer />
+      <EnhancedXlevateScout/>
     </>;
 };
 export default CaseStudies;

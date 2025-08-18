@@ -39,7 +39,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/automation-roi-calculator" element={<ROICalculator />} />
-          <Route path="/blog" element={<Maintenance />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

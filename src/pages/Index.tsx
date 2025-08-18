@@ -9,10 +9,10 @@ import UrgencySection from "@/components/UrgencySection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { XlevateScout } from "@/components/XlevateScout";
 import { SEOOptimizer } from "@/components/blog/SEOOptimizer";
 import FAQSchema from "@/components/FAQSchema";
 import { useEffect } from "react";
-import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
 
 const Index = () => {
   useEffect(() => {
@@ -24,8 +24,8 @@ const Index = () => {
       console.log(`Page load time: ${loadTime.toFixed(2)}ms`);
       
       // Track page view in analytics
-      if (typeof (window as unknown as { gtag?: unknown }).gtag !== 'undefined') {
-        (window as unknown as { gtag: (event: string, action: string, params: Record<string, unknown>) => void }).gtag('event', 'page_view', {
+      if (typeof (window as any).gtag !== 'undefined') {
+        (window as any).gtag('event', 'page_view', {
           page_title: 'Xlevate Tech - AI Automation Solutions',
           page_location: window.location.href,
           load_time: Math.round(loadTime)
@@ -46,7 +46,7 @@ const Index = () => {
     <div className="min-h-screen bg-elevate-dark" style={{ paddingLeft: '1rem', paddingRight: '1rem' }}>
       <SEOOptimizer
         title="Reclaim 30+ Hours Monthly with AI Automation"
-        description="Streamline ops, stay compliant, and grow. AI-driven automation for operational leaders in finance, real estate, and healthcare. Rapid implementation in 2-4 weeks."
+        description="AI automation solutions for finance, healthcare & real estate. 30-45% cost savings, 2-6 week implementation. Chicago-based experts with proven ROI."
         keywords={[
           "AI automation",
           "workflow optimization", 
@@ -83,7 +83,7 @@ const Index = () => {
       </footer>
       
       <ScrollToTop />
-        <EnhancedXlevateScout />
+      {/* <XlevateScout /> */}
     </div>
   );
 };

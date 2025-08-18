@@ -22,6 +22,7 @@ import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
 import Maintenance from "./pages/Maintenance";
 import ScrollToTop from "./components/footer/ScrollToTop";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/admin" element={<Admin />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

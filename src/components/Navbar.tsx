@@ -342,8 +342,7 @@ const Navbar = () => {
             >
               Contact Us
             </a>
-          </div>
-
+</div>
           {/* Mobile Menu Button - Enhanced spacing */}
           <button 
             onClick={toggleMenu}
@@ -531,7 +530,6 @@ const Navbar = () => {
             >
               Blog
             </a>
-            
             <a 
               href="/contact"
               className="block w-full text-left text-white hover:text-[#4A90E2] py-4 border-b border-gray-700/20 transition-all duration-300 text-lg font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-[#70EDFF] px-2 hover:bg-white/5"

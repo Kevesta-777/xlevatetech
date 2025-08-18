@@ -17,7 +17,7 @@ const About = () => {
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Discover the story behind Xlevate Tech\'s founder Raj Dalal. From enterprise operations experience to automation expertise, helping businesses reclaim 30+ hours monthly. The founder who\'s helped businesses save time through automation.');
+      metaDescription.setAttribute('content', 'Meet Raj Dalal, AI automation expert with 10+ years experience helping finance, healthcare & real estate businesses reduce operational costs by 30-50%.');
     }
   }, []);
   return <div className="min-h-screen bg-elevate-dark">
@@ -315,7 +315,7 @@ const About = () => {
 
       <Footer />
       <ScrollToTop />
-      <EnhancedXlevateScout />
+      {/* <EnhancedXlevateScout /> */}
     </div>;
 };
 export default About;

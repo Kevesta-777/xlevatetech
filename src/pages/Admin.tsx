@@ -16,6 +16,7 @@ import { SecurityMonitoring } from '@/components/admin/SecurityMonitoring';
 import { AdminSettings } from '@/components/admin/AdminSettings';
 import { AdminPerformanceAnalytics } from '@/components/admin/AdminPerformanceAnalytics';
 import { AdminDocumentation } from '@/components/admin/AdminDocumentation';
+import { AdminLeads } from '@/components/admin/AdminLeads';
 import { supabase } from '@/integrations/supabase/client';
 
 interface AdminUser {
@@ -48,8 +49,30 @@ const Admin = () => {
         return;
       }
 
-      // For now, allow any authenticated user as admin (you should implement proper admin checking)
-      // This is a basic implementation - in production, you'd check against an admin users table
+      // Check admin role via user_roles table if available
+      let isAdmin = false;
+      try {
+        const { data: roles, error: rolesError } = await (supabase.from('user_roles' as any) as any)
+          .select('role')
+          .eq('user_id', session.user.id);
+
+        if (!rolesError && Array.isArray(roles)) {
+          isAdmin = roles.some((r: any) => ['admin', 'super_admin'].includes(r.role));
+        } else if (rolesError && (rolesError as any).code === '42P01') {
+          // user_roles table not found - fallback allow during setup
+          isAdmin = true;
+        }
+      } catch (e) {
+        console.warn('Role check failed', e);
+      }
+
+      if (!isAdmin) {
+        setIsAuthenticated(false);
+        setIsLoading(false);
+        toast({ title: 'Access denied', description: 'You do not have admin access.' });
+        return;
+      }
+
       const mockAdminUser: AdminUser = {
         id: session.user.id,
         email: session.user.email || '',
@@ -60,7 +83,7 @@ const Admin = () => {
 
       setAdminUser(mockAdminUser);
       setIsAuthenticated(true);
-        
+
     } catch (error) {
       console.error('Auth check error:', error);
       setIsAuthenticated(false);
@@ -108,6 +131,7 @@ const Admin = () => {
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
     { id: 'content', label: 'Content Management', icon: FileText },
+    { id: 'leads', label: 'Leads CRM', icon: FileText },
     { id: 'rss', label: 'RSS Management', icon: Globe },
     { id: 'analytics', label: 'Analytics', icon: BarChart3 },
     { id: 'performance', label: 'Performance', icon: Activity },
@@ -171,10 +195,13 @@ const Admin = () => {
               <ContentManagement adminUser={adminUser} />
             </TabsContent>
             
+            <TabsContent value="leads" className="mt-0">
+              <AdminLeads adminUser={adminUser} />
+            </TabsContent>
             <TabsContent value="rss" className="mt-0">
               <RSSFeedManagement adminUser={adminUser} />
             </TabsContent>
-            
+
             <TabsContent value="analytics" className="mt-0">
               <AnalyticsDashboard adminUser={adminUser} />
             </TabsContent>

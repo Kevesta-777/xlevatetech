@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -9,24 +9,38 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowRight, ExternalLink, TrendingUp, Users, DollarSign, Clock, CheckCircle, AlertCircle, Building, Bot, Pill } from 'lucide-react';
-import { EnhancedXlevateScout } from '@/components/EnhancedXlevateScout';
+
 // Import case study images
 import realEstateImage from '@/assets/real-estate-case-study.jpg';
 import wealthManagementImage from '@/assets/wealth-management-case-study.jpg';
 import pharmacyImage from '@/assets/pharmacy-case-study.jpg';
+
+interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  highlights?: string[];
+  details?: string[];
+}
+
 const CaseStudies = () => {
   const [expandedTimeline, setExpandedTimeline] = useState<string | null>(null);
   const [expandedMethodology, setExpandedMethodology] = useState<string | null>(null);
+  const [openFAQ, setOpenFAQ] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const faqSectionRef = useRef<HTMLElement>(null);
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
   const projectData = [{
     id: 'real-estate',
     industry: 'Real Estate & Property Management',
     title: 'Transforming Property Management: Buildium to AppFolio Migration',
     image: realEstateImage,
     icon: Building,
-    phase: 'Data Migration - Pending Import and Validation',
-    week: 'Week 8/10',
+    phase: 'Data Migration Complete - Pending Validation',
+    week: 'Week 9/10',
     startDate: 'Starting 6/10/25',
-    progress: 80,
+    progress: 90,
     challenge: 'Complete platform migration without operational disruption',
     targetKPI: 'Goal ≥40% efficiency',
     currentResult: 'Data-entry cut 45%',
@@ -39,7 +53,7 @@ const CaseStudies = () => {
       status: 'complete',
       date: '06/24/25'
     }, {
-      milestone: 'AI Build',
+      milestone: 'ETL Build',
       status: 'complete',
       date: '07/08-07/22/25'
     }, {
@@ -72,10 +86,10 @@ const CaseStudies = () => {
     title: 'Revolutionizing Client Engagement: AI Chatbot & Workflow Automation',
     image: wealthManagementImage,
     icon: Bot,
-    phase: 'Integration & Testing Phase',
-    week: 'Week 4/5',
-    startDate: 'Starting 7/7/25',
-    progress: 90,
+    phase: 'Implementation Complete - Support Started',
+    week: 'Week 3/3',
+    startDate: 'Completed 8/13/25',
+    progress: 100,
     challenge: 'Scale client service without sacrificing quality',
     targetKPI: 'Goal ≥60% routine task reduction',
     currentResult: 'Support queries cut 70%',
@@ -97,7 +111,7 @@ const CaseStudies = () => {
       date: '07/28-08/04/25'
     }, {
       milestone: 'Go-Live',
-      status: 'in-progress',
+      status: 'complete',
       date: '08/05/25'
     }, {
       milestone: 'Post-Go-Live Optimization',
@@ -165,24 +179,92 @@ const CaseStudies = () => {
       current: 'Consultation Required'
     }]
   }];
-  const faqItems = [{
-    question: "When will full case studies launch?",
-    answer: "Q4 2025 pending client approval."
-  }, {
-    question: "How do you verify ROI?",
-    answer: "We use a comprehensive ROI Calculation Framework including baseline time-motion studies, automated log capture, weekly variance analysis, and third-party validation where applicable."
-  }, {
-    question: "Can we speak with reference clients under NDA?",
-    answer: "Yes—contact sales to arrange reference calls with current clients under mutual NDA agreements."
-  }, {
-    question: "What if our KPIs differ?",
-    answer: "Every implementation is custom-scoped based on your specific operational needs, existing systems, and target outcomes. We tailor our approach to your unique requirements."
-  }];
-  const handleWaitlistSignup = () => {
-    // Handle waitlist signup logic here
-    alert('Waitlist signup functionality to be implemented');
 
-    // GA4 tracking
+  const faqItems: FAQItem[] = [{
+    id: "faq-1",
+    question: "When will full case studies launch?",
+    answer: "Q4 2025 pending client approval.",
+    highlights: ["Q4 2025"]
+  }, {
+    id: "faq-2",
+    question: "How do you verify ROI?",
+    answer: "We use a comprehensive ROI Calculation Framework including baseline time-motion studies, automated log capture, weekly variance analysis, and third-party validation where applicable.",
+    highlights: ["ROI Calculation Framework"],
+    details: [
+      "Baseline time-motion studies for accurate benchmarking",
+      "Automated log capture for real-time data collection",
+      "Weekly variance analysis to track progress",
+      "Third-party validation where applicable for credibility"
+    ]
+  }, {
+    id: "faq-3",
+    question: "Can we speak with reference clients under NDA?",
+    answer: "Yes—contact sales to arrange reference calls with current clients under mutual NDA agreements.",
+    highlights: ["mutual NDA agreements"]
+  }, {
+    id: "faq-4",
+    question: "What if our KPIs differ?",
+    answer: "Every implementation is custom-scoped based on your specific operational needs, existing systems, and target outcomes. We tailor our approach to your unique requirements.",
+    highlights: ["custom-scoped"],
+    details: [
+      "Analysis of your specific operational needs",
+      "Integration with existing systems and workflows",
+      "Alignment with your target outcomes and goals",
+      "Tailored approach for your unique requirements"
+    ]
+  }];
+
+  // JSON-LD Schema for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${faq.answer} ${faq.details ? faq.details.join('. ') : ''}`
+      }
+    }))
+  };
+
+  // Lazy loading implementation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !isLoaded) {
+            setIsLoaded(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (faqSectionRef.current) {
+      observer.observe(faqSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isLoaded]);
+
+  // Mobile touch optimization - Fixed TypeScript error
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('[data-accordion-trigger]')) {
+        // Use setProperty to avoid TypeScript errors with webkit prefixed properties
+        target.style.setProperty('-webkit-tap-highlight-color', 'rgba(59, 130, 246, 0.1)');
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    return () => document.removeEventListener('touchstart', handleTouchStart);
+  }, []);
+
+  const handleWaitlistSignup = () => {
+    alert('Waitlist signup functionality to be implemented');
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'WaitlistSignup', {
         event_category: 'engagement',
@@ -190,10 +272,9 @@ const CaseStudies = () => {
       });
     }
   };
+
   const handleTimelineToggle = (projectId: string) => {
     setExpandedTimeline(expandedTimeline === projectId ? null : projectId);
-
-    // GA4 tracking
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'TimelineAccordionOpen', {
         event_category: 'engagement',
@@ -201,13 +282,13 @@ const CaseStudies = () => {
       });
     }
   };
+
   const handleMethodologyToggle = (projectId: string) => {
     setExpandedMethodology(expandedMethodology === projectId ? null : projectId);
   };
+
   const handleBookNow = () => {
     window.open('https://calendly.com/raj-dalal-xlevatetech', '_blank');
-
-    // GA4 tracking
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'BookNowClick', {
         event_category: 'engagement',
@@ -215,9 +296,67 @@ const CaseStudies = () => {
       });
     }
   };
-  return <>
+
+  const handleFAQClick = (itemId: string) => {
+    const newOpenItem = openFAQ === itemId ? null : itemId;
+    setOpenFAQ(newOpenItem);
+    
+    if (newOpenItem && itemRefs.current[itemId]) {
+      setTimeout(() => {
+        itemRefs.current[itemId]?.scrollIntoView({ 
+          behavior: 'smooth',
+          block: window.innerWidth < 768 ? 'start' : 'center'
+        });
+      }, 100);
+    }
+  };
+
+  const renderFAQAnswer = (faq: FAQItem) => {
+    const { answer, highlights = [], details = [] } = faq;
+    
+    let processedAnswer = answer;
+    
+    highlights.forEach(highlight => {
+      const regex = new RegExp(`(${highlight})`, 'gi');
+      processedAnswer = processedAnswer.replace(
+        regex, 
+        '<span class="bg-primary/20 text-primary px-1 py-0.5 rounded font-semibold">$1</span>'
+      );
+    });
+
+    return (
+      <div className="space-y-4">
+        <p 
+          className="text-gray-300 text-sm sm:text-base leading-relaxed whitespace-normal break-words"
+          dangerouslySetInnerHTML={{ __html: processedAnswer }}
+        />
+        {details.length > 0 && (
+          <ul className="space-y-2 ml-4">
+            {details.map((detail, index) => (
+              <li 
+                key={index}
+                className="text-gray-400 text-sm md:text-base flex items-start"
+              >
+                <span className="text-primary mr-2 mt-1 flex-shrink-0">•</span>
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <>
+      {/* JSON-LD Schema */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      
       <Helmet>
-        <title>Case Studies - Real-World AI Transformations in Progress | XLevateTech</title>
+        <title>Case Studies - Real-World AI Transformations in Progress | XlevateTech</title>
         <meta name="description" content="Transparent progress snapshots of live AI deployments. See early metrics, methodology specifics, and FTC-compliant disclaimers while awaiting final client approval." />
         <meta name="keywords" content="AI automation case studies, business transformation, ROI, efficiency gains, real-world results, project progress" />
         <link rel="canonical" href="https://xlevatetech.com/case-studies" />
@@ -226,14 +365,14 @@ const CaseStudies = () => {
       <div className="min-h-screen bg-elevate-dark relative">
         {/* Diagonal line pattern background */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{
-        backgroundImage: `repeating-linear-gradient(
-              45deg,
-              hsl(var(--primary)),
-              hsl(var(--primary)) 1px,
-              transparent 1px,
-              transparent 20px
-            )`
-      }}></div>
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            hsl(var(--primary)),
+            hsl(var(--primary)) 1px,
+            transparent 1px,
+            transparent 20px
+          )`
+        }}></div>
         
         <Navbar />
         
@@ -253,7 +392,7 @@ const CaseStudies = () => {
                 </div>
               </div>
               
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">We're midway through two AI and Automation deployments. Explore early metrics, see how they compare to 2025 industry averages, and join our waitlist to get the full ROI reports upon client approval.</p>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">We're nearly complete two AI and Automation deployments. Explore early metrics, see how they compare to 2025 industry averages, and join our waitlist to get the full ROI reports upon client approval.</p>
               
               <Button size="lg" onClick={handleWaitlistSignup} className="bg-primary hover:bg-primary/90 text-white font-semibold min-h-[44px] px-8 focus:ring-2 focus:ring-primary/20 focus:outline-none" aria-label="Join waitlist to be notified when full case studies launch">
                 Notify Me at Launch
@@ -268,9 +407,10 @@ const CaseStudies = () => {
           <div className="container mx-auto px-2 md:px-4 lg:px-6">
             <div className="space-y-8 max-w-6xl mx-auto">
               {projectData.map(project => {
-              const IconComponent = project.icon;
-              const progressPercentage = project.progress;
-              return <Card key={project.id} className="bg-elevate-dark/70 backdrop-blur-sm border border-elevate-accent/20 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 hover:border-elevate-accent/40">
+                const IconComponent = project.icon;
+                const progressPercentage = project.progress;
+                return (
+                  <Card key={project.id} className="bg-elevate-dark/70 backdrop-blur-sm border border-elevate-accent/20 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 hover:border-elevate-accent/40">
                     <div className="grid lg:grid-cols-2 gap-0">
                       {/* Image Section */}
                       <div className="relative order-2 lg:order-1">
@@ -299,7 +439,6 @@ const CaseStudies = () => {
                         </div>
 
                         <div className="flex items-start gap-3 mb-6">
-
                           <div className="flex-1">
                             <h2 className="font-semibold text-white mb-2 text-lg sm:text-xl leading-tight">
                               {project.title}
@@ -315,8 +454,8 @@ const CaseStudies = () => {
                               </div>
                               <div className="relative h-2 w-full overflow-hidden rounded-full bg-gray-700">
                                 <div className={`h-full transition-all duration-300 ${progressPercentage >= 80 ? 'bg-green-500' : progressPercentage >= 50 ? 'bg-yellow-500' : 'bg-red-500'}`} style={{
-                              width: `${progressPercentage}%`
-                            }} aria-label={`Project progress: ${progressPercentage}% complete`} />
+                                  width: `${progressPercentage}%`
+                                }} aria-label={`Project progress: ${progressPercentage}% complete`} />
                               </div>
                             </div>
                           </div>
@@ -359,7 +498,8 @@ const CaseStudies = () => {
                                       </TableRow>
                                     </TableHeader>
                                     <TableBody>
-                                      {project.timeline.map((item, index) => <TableRow key={index}>
+                                      {project.timeline.map((item, index) => (
+                                        <TableRow key={index}>
                                           <TableCell className="text-xs text-white">{item.milestone}</TableCell>
                                           <TableCell className="text-xs">
                                             <div className="flex items-center gap-2">
@@ -370,7 +510,8 @@ const CaseStudies = () => {
                                             </div>
                                           </TableCell>
                                           <TableCell className="text-xs text-white">{item.date}</TableCell>
-                                        </TableRow>)}
+                                        </TableRow>
+                                      ))}
                                     </TableBody>
                                   </Table>
                                 </div>
@@ -393,12 +534,14 @@ const CaseStudies = () => {
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
-                                {project.benchmarks.map((benchmark, index) => <TableRow key={index}>
+                                {project.benchmarks.map((benchmark, index) => (
+                                  <TableRow key={index}>
                                     <TableCell className="text-xs text-white">{benchmark.kpi}</TableCell>
                                     <TableCell className="text-xs text-white">{benchmark.industryAvg}</TableCell>
                                     <TableCell className="text-xs text-white">{benchmark.target}</TableCell>
                                     <TableCell className="text-xs font-medium text-green-400">{benchmark.current}</TableCell>
-                                  </TableRow>)}
+                                  </TableRow>
+                                ))}
                               </TableBody>
                             </Table>
                           </div>
@@ -435,42 +578,114 @@ const CaseStudies = () => {
                         <div className="text-sm font-semibold text-gray-300 text-end">{project.startDate}</div>
                       </div>
                     </div>
-                  </Card>;
-            })}
-            
-            {/* Healthcare Service Disclaimer */}
-            <div className="max-w-4xl mx-auto mt-8">
-              <div className="bg-white/5 border border-gray-600/30 rounded-lg p-4 backdrop-blur-sm">
-                <div className="text-sm text-gray-300">
-                  <div className="font-semibold text-gray-200 mb-2">HEALTHCARE SERVICE DISCLAIMER:</div>
-                  <p>Healthcare automation services focus on administrative and operational efficiency improvements. All implementations comply with HIPAA requirements and healthcare regulations. Pilot programs available for qualified medical practices and healthcare administrative services.</p>
+                  </Card>
+                );
+              })}
+              
+              {/* Healthcare Service Disclaimer */}
+              <div className="max-w-4xl mx-auto mt-8">
+                <div className="bg-white/5 border border-gray-600/30 rounded-lg p-4 backdrop-blur-sm">
+                  <div className="text-sm text-gray-300">
+                    <div className="font-semibold text-gray-200 mb-2">HEALTHCARE SERVICE DISCLAIMER:</div>
+                    <p>Healthcare automation services focus on administrative and operational efficiency improvements. All implementations comply with HIPAA requirements and healthcare regulations. Pilot programs available for qualified medical practices and healthcare administrative services.</p>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ Accordion */}
-        <section className="py-16 bg-gradient-to-br bg-elevate-dark" aria-labelledby="faq-heading">
+        {/* Enhanced FAQ Section */}
+        <section 
+          ref={faqSectionRef}
+          className="py-16 bg-gradient-to-br bg-elevate-dark" 
+          aria-labelledby="faq-heading"
+        >
           <div className="container mx-auto px-2 md:px-4 lg:px-6">
             <div className="text-center mb-12">
               <h2 id="faq-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white">
                 Frequently Asked Questions
               </h2>
+              <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+                Get answers to common questions about our case studies, ROI verification process, and client references.
+              </p>
             </div>
             
             <div className="max-w-3xl mx-auto">
               <Accordion type="single" collapsible className="space-y-4">
-                {faqItems.map((item, index) => <AccordionItem key={index} value={`item-${index}`} className="bg-elevate-dark/70 backdrop-blur-sm rounded-lg border border-elevate-accent/20 shadow-sm hover:border-elevate-accent/40 transition-all duration-300">
-                    <AccordionTrigger className="px-6 py-4 text-left hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary/20 min-h-[44px]">
-                      <span className="font-medium text-white text-sm sm:text-base">{item.question}</span>
+                {faqItems.map((item) => (
+                  <AccordionItem 
+                    key={item.id} 
+                    value={item.id}
+                    ref={(el) => (itemRefs.current[item.id] = el)}
+                    className="bg-elevate-dark/70 backdrop-blur-sm rounded-lg border border-elevate-accent/20 shadow-sm hover:border-elevate-accent/40 transition-all duration-300"
+                  >
+                    <AccordionTrigger 
+                      onClick={() => handleFAQClick(item.id)}
+                      className="px-6 py-4 text-left hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary/20 min-h-[44px] no-underline hover:no-underline"
+                      data-accordion-trigger
+                      aria-controls={`${item.id}-content`}
+                      aria-expanded={openFAQ === item.id}
+                    >
+                      <span className="font-medium text-white text-sm sm:text-base font-semibold">
+                        {item.question}
+                      </span>
                     </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-6">
-                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed whitespace-normal break-words">{item.answer}</p>
+                    <AccordionContent 
+                      id={`${item.id}-content`}
+                      className="px-6 pb-6"
+                    >
+                      <div className="pt-4 border-t border-elevate-accent/10">
+                        {renderFAQAnswer(item)}
+                      </div>
                     </AccordionContent>
-                  </AccordionItem>)}
+                  </AccordionItem>
+                ))}
               </Accordion>
+
+              {/* Call to Action - Case Studies Focused */}
+              <div className="mt-12 p-6 md:p-8 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg border border-primary/20 text-center">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+                  Ready to See Your Results?
+                </h3>
+                <p className="text-gray-300 mb-6 text-sm md:text-base max-w-2xl mx-auto">
+                  Join our waitlist to be notified when detailed case studies are available, or schedule a consultation to discuss your specific ROI requirements.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <button 
+                    onClick={() => {
+                      handleWaitlistSignup();
+                      if (typeof window !== 'undefined' && (window as any).gtag) {
+                        (window as any).gtag('event', 'WaitlistSignup', {
+                          event_category: 'engagement',
+                          event_label: 'faq_case_studies_waitlist'
+                        });
+                      }
+                    }}
+                    className="inline-block bg-primary/20 hover:bg-primary/30 text-primary border border-primary px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold transition-all duration-300 min-h-[44px] flex items-center justify-center text-sm md:text-base"
+                    aria-label="Join case studies waitlist"
+                  >
+                    Join Waitlist
+                  </button>
+                  <a 
+                    href="https://calendly.com/raj-dalal-xlevatetech" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && (window as any).gtag) {
+                        (window as any).gtag('event', 'BookNowClick', {
+                          event_category: 'engagement',
+                          event_label: 'faq_consultation_cta'
+                        });
+                      }
+                    }}
+                    className="inline-block bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 min-h-[44px] flex items-center justify-center text-sm md:text-base"
+                    aria-label="Book a consultation"
+                  >
+                    Book Consultation
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -497,7 +712,8 @@ const CaseStudies = () => {
       </div>
       
       <Footer />
-      <EnhancedXlevateScout/>
-    </>;
+    </>
+  );
 };
+
 export default CaseStudies;

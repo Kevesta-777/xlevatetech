@@ -7,7 +7,7 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "12.2.3 (519615d)"
@@ -453,6 +453,158 @@ export type Database = {
         }
         Relationships: []
       }
+      lead_outreach_events: {
+        Row: {
+          booked: boolean
+          campaign_name: string
+          channel: string
+          clicks: number
+          content: string | null
+          created_at: string
+          date_sent: string
+          direction: string
+          id: string
+          lead_id: string | null
+          phone: string
+          referrals: number
+          replied: boolean
+          user_id: string | null
+          version_sent: string | null
+        }
+        Insert: {
+          booked?: boolean
+          campaign_name?: string
+          channel?: string
+          clicks?: number
+          content?: string | null
+          created_at?: string
+          date_sent?: string
+          direction?: string
+          id?: string
+          lead_id?: string | null
+          phone: string
+          referrals?: number
+          replied?: boolean
+          user_id?: string | null
+          version_sent?: string | null
+        }
+        Update: {
+          booked?: boolean
+          campaign_name?: string
+          channel?: string
+          clicks?: number
+          content?: string | null
+          created_at?: string
+          date_sent?: string
+          direction?: string
+          id?: string
+          lead_id?: string | null
+          phone?: string
+          referrals?: number
+          replied?: boolean
+          user_id?: string | null
+          version_sent?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_outreach_lead"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          budget: string | null
+          budget_qualified: boolean | null
+          calendly_link: string | null
+          campaign_id: string | null
+          company_name: string | null
+          company_size: string | null
+          created_at: string
+          email: string | null
+          first_name: string
+          id: string
+          industry_sector: string | null
+          last_contacted_at: string | null
+          last_name: string
+          lead_source: string | null
+          location: string | null
+          notes: string | null
+          opt_out: boolean
+          pain_points: string | null
+          phone: string
+          role_title: string | null
+          score: number | null
+          social_links: string | null
+          source: Database["public"]["Enums"]["lead_source"]
+          stage: Database["public"]["Enums"]["lead_stage"]
+          updated_at: string | null
+          user_id: string | null
+          website_url: string | null
+        }
+        Insert: {
+          budget?: string | null
+          budget_qualified?: boolean | null
+          calendly_link?: string | null
+          campaign_id?: string | null
+          company_name?: string | null
+          company_size?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string
+          id?: string
+          industry_sector?: string | null
+          last_contacted_at?: string | null
+          last_name: string
+          lead_source?: string | null
+          location?: string | null
+          notes?: string | null
+          opt_out?: boolean
+          pain_points?: string | null
+          phone: string
+          role_title?: string | null
+          score?: number | null
+          social_links?: string | null
+          source?: Database["public"]["Enums"]["lead_source"]
+          stage?: Database["public"]["Enums"]["lead_stage"]
+          updated_at?: string | null
+          user_id?: string | null
+          website_url?: string | null
+        }
+        Update: {
+          budget?: string | null
+          budget_qualified?: boolean | null
+          calendly_link?: string | null
+          campaign_id?: string | null
+          company_name?: string | null
+          company_size?: string | null
+          created_at?: string
+          email?: string | null
+          first_name?: string
+          id?: string
+          industry_sector?: string | null
+          last_contacted_at?: string | null
+          last_name?: string
+          lead_source?: string | null
+          location?: string | null
+          notes?: string | null
+          opt_out?: boolean
+          pain_points?: string | null
+          phone?: string
+          role_title?: string | null
+          score?: number | null
+          social_links?: string | null
+          source?: Database["public"]["Enums"]["lead_source"]
+          stage?: Database["public"]["Enums"]["lead_stage"]
+          updated_at?: string | null
+          user_id?: string | null
+          website_url?: string | null
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           content: string
@@ -741,84 +893,6 @@ export type Database = {
         }
         Relationships: []
       }
-      leads: {
-        Row: {
-          id: string
-          created_at: string
-          first_name: string | null
-          last_name: string | null
-          email: string | null
-          phone: string | null
-          company_name: string | null
-          industry_sector: string | null
-          location: string | null
-          company_size: string | null
-          website_url: string | null
-          role_title: string | null
-          social_links: string | null
-          pain_points: string | null
-          budget_timeline: string | null
-          notes: string | null
-          score: number | null
-          stage: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
-          source: 'form' | 'chatbot' | 'linkedin' | 'email'
-          campaign_id: string | null
-          last_contacted_at: string | null
-          calendly_link: string | null
-          opt_out: boolean
-        }
-        Insert: {
-          id?: string
-          created_at?: string
-          first_name?: string | null
-          last_name?: string | null
-          email?: string | null
-          phone?: string | null
-          company_name?: string | null
-          industry_sector?: string | null
-          location?: string | null
-          company_size?: string | null
-          website_url?: string | null
-          role_title?: string | null
-          social_links?: string | null
-          pain_points?: string | null
-          budget_timeline?: string | null
-          notes?: string | null
-          score?: number | null
-          stage?: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
-          source: 'form' | 'chatbot' | 'linkedin' | 'email'
-          campaign_id?: string | null
-          last_contacted_at?: string | null
-          calendly_link?: string | null
-          opt_out?: boolean
-        }
-        Update: {
-          id?: string
-          created_at?: string
-          first_name?: string | null
-          last_name?: string | null
-          email?: string | null
-          phone?: string | null
-          company_name?: string | null
-          industry_sector?: string | null
-          location?: string | null
-          company_size?: string | null
-          website_url?: string | null
-          role_title?: string | null
-          social_links?: string | null
-          pain_points?: string | null
-          budget_timeline?: string | null
-          notes?: string | null
-          score?: number | null
-          stage?: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
-          source?: 'form' | 'chatbot' | 'linkedin' | 'email'
-          campaign_id?: string | null
-          last_contacted_at?: string | null
-          calendly_link?: string | null
-          opt_out?: boolean
-        }
-        Relationships: []
-      }
     }
     Views: {
       [_ in never]: never
@@ -835,21 +909,25 @@ export type Database = {
       get_admin_user: {
         Args: { user_email: string }
         Returns: {
-          id: string
           email: string
-          role: string
+          id: string
           last_login: string
           mfa_enabled: boolean
+          role: string
         }[]
       }
       get_current_admin_user: {
         Args: Record<PropertyKey, never>
         Returns: {
-          id: string
           email: string
-          role: string
+          id: string
           is_active: boolean
+          role: string
         }[]
+      }
+      increment_clicks: {
+        Args: { event_id: string }
+        Returns: undefined
       }
       is_current_user_super_admin: {
         Args: Record<PropertyKey, never>
@@ -858,9 +936,9 @@ export type Database = {
       log_admin_action: {
         Args: {
           p_action: string
-          p_resource_type?: string
-          p_resource_id?: string
           p_details?: Json
+          p_resource_id?: string
+          p_resource_type?: string
         }
         Returns: undefined
       }
@@ -870,8 +948,23 @@ export type Database = {
       }
     }
     Enums: {
-      lead_stage: 'captured' | 'qualified' | 'disqualified' | 'contacted' | 'meeting_booked'
-      lead_source: 'form' | 'chatbot' | 'linkedin' | 'email'
+      lead_source:
+        | "form"
+        | "chatbot"
+        | "linkedin"
+        | "email"
+        | "sms_tracking"
+        | "sms"
+        | "web"
+        | "cold"
+        | "referral"
+        | "import"
+      lead_stage:
+        | "captured"
+        | "qualified"
+        | "disqualified"
+        | "contacted"
+        | "meeting_booked"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -999,19 +1092,25 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      lead_stage: {
-        captured: 'captured',
-        qualified: 'qualified',
-        disqualified: 'disqualified',
-        contacted: 'contacted',
-        meeting_booked: 'meeting_booked'
-      },
-      lead_source: {
-        form: 'form',
-        chatbot: 'chatbot',
-        linkedin: 'linkedin',
-        email: 'email'
-      }
+      lead_source: [
+        "form",
+        "chatbot",
+        "linkedin",
+        "email",
+        "sms_tracking",
+        "sms",
+        "web",
+        "cold",
+        "referral",
+        "import",
+      ],
+      lead_stage: [
+        "captured",
+        "qualified",
+        "disqualified",
+        "contacted",
+        "meeting_booked",
+      ],
     },
   },
 } as const

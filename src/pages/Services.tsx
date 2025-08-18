@@ -17,7 +17,7 @@ const Services = () => {
     document.title = "AI Automation Services & Custom Development | 30-40% Below Enterprise Rates | Xlevate Tech";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Professional AI automation services: workflows, chatbots, system migrations, custom development. Research-backed pricing 30-40% below enterprise firms. Get started today.');
+      metaDescription.setAttribute('content', 'Professional AI automation services with transparent pricing. Proven 30% efficiency gains. Free consultation and 2-6 week implementation.');
     }
     const structuredData = {
       "@context": "https://schema.org",
@@ -593,9 +593,9 @@ const Services = () => {
         </section>
       </main>
 
+      {/* <EnhancedXlevateScout /> */}
       <Footer />
       <ScrollToTop />
-      <EnhancedXlevateScout />
     </div>;
 };
 export default Services;

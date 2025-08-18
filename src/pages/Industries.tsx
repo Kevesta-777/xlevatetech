@@ -8,7 +8,7 @@ import { MarketShareChart } from "@/components/industries/MarketShareChart";
 import { KeyInsights } from "@/components/industries/KeyInsights";
 import { ComplianceSection } from "@/components/industries/ComplianceSection";
 import { Sparkles, Zap, Shield, Target } from "lucide-react";
-import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
+
 const Industries = () => {
   useEffect(() => {
     // Enhanced SEO with FTC-compliant industry benchmarks
@@ -231,7 +231,6 @@ const Industries = () => {
         <Footer />
       </footer>
       <ScrollToTop />
-      <EnhancedXlevateScout/>
     </div>;
 };
 

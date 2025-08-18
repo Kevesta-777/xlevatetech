@@ -14,6 +14,7 @@ import { ArrowRight, ExternalLink, TrendingUp, Users, DollarSign, Clock, CheckCi
 import realEstateImage from '@/assets/real-estate-case-study.jpg';
 import wealthManagementImage from '@/assets/wealth-management-case-study.jpg';
 import pharmacyImage from '@/assets/pharmacy-case-study.jpg';
+import { EnhancedXlevateScout } from '@/components/EnhancedXlevateScout';
 
 interface FAQItem {
   id: string;
@@ -712,6 +713,7 @@ const CaseStudies = () => {
       </div>
       
       <Footer />
+      <EnhancedXlevateScout/>
     </>
   );
 };

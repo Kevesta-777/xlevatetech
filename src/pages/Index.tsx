@@ -9,7 +9,7 @@ import UrgencySection from "@/components/UrgencySection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import { XlevateScout } from "@/components/XlevateScout";
+import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
 import { SEOOptimizer } from "@/components/blog/SEOOptimizer";
 import FAQSchema from "@/components/FAQSchema";
 import { useEffect } from "react";
@@ -83,7 +83,7 @@ const Index = () => {
       </footer>
       
       <ScrollToTop />
-      {/* <XlevateScout /> */}
+      <EnhancedXlevateScout />
     </div>
   );
 };

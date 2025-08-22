@@ -117,32 +117,33 @@ export class AnalyticsEngine {
 
   // Session Analytics
   async recordSession(session: SessionMemory, leadScore: LeadScore, messages: any[]): Promise<void> {
-    const sessionAnalytics: Partial<SessionAnalytics> = {
-      sessionId: session.sessionId,
-      userId: session.userId,
-      startTime: session.context.lastInteraction,
-      messageCount: session.context.messageCount,
-      leadScore: leadScore.score,
-      conversionPath: this.extractConversionPath(messages),
-      disposition: this.determineDisposition(leadScore),
-      tags: this.extractTags(messages),
-      sentiment: this.calculateSentiment(messages),
-      responseTime: this.calculateAverageResponseTime(messages)
-    };
+    // TODO: Implement session_analytics table
+    // const sessionAnalytics: Partial<SessionAnalytics> = {
+    //   sessionId: session.sessionId,
+    //   userId: session.userId,
+    //   startTime: session.context.lastInteraction,
+    //   messageCount: session.context.messageCount,
+    //   leadScore: leadScore.score,
+    //   conversionPath: this.extractConversionPath(messages),
+    //   disposition: this.determineDisposition(leadScore),
+    //   tags: this.extractTags(messages),
+    //   sentiment: this.calculateSentiment(messages),
+    //   responseTime: this.calculateAverageResponseTime(messages)
+    // };
 
-    await supabase.from('session_analytics').upsert({
-      session_id: session.sessionId,
-      user_id: session.userId,
-      start_time: sessionAnalytics.startTime?.toISOString(),
-      message_count: sessionAnalytics.messageCount,
-      lead_score: sessionAnalytics.leadScore,
-      conversion_path: sessionAnalytics.conversionPath,
-      disposition: sessionAnalytics.disposition,
-      tags: sessionAnalytics.tags,
-      sentiment: sessionAnalytics.sentiment,
-      response_time: sessionAnalytics.responseTime,
-      created_at: new Date().toISOString()
-    });
+    // await supabase.from('session_analytics').upsert({
+    //   session_id: session.sessionId,
+    //   user_id: session.userId,
+    //   start_time: sessionAnalytics.startTime?.toISOString(),
+    //   message_count: sessionAnalytics.messageCount,
+    //   lead_score: sessionAnalytics.leadScore,
+    //   conversion_path: sessionAnalytics.conversionPath,
+    //   disposition: sessionAnalytics.disposition,
+    //   tags: sessionAnalytics.tags,
+    //   sentiment: sessionAnalytics.sentiment,
+    //   response_time: sessionAnalytics.responseTime,
+    //   created_at: new Date().toISOString()
+    // });
   }
 
   // Growth Metrics
@@ -172,58 +173,42 @@ export class AnalyticsEngine {
 
   // Conversion Metrics
   async getConversionMetrics(timeframe: '7d' | '30d' | '90d' = '30d'): Promise<ConversionMetrics> {
-    const startDate = this.getStartDate(timeframe);
+    // TODO: Implement session_analytics table
+    // const startDate = this.getStartDate(timeframe);
 
-    const { data: sessions, error } = await supabase
-      .from('session_analytics')
-      .select('*')
-      .gte('start_time', startDate.toISOString());
+    // const { data: sessions, error } = await supabase
+    //   .from('session_analytics')
+    //   .select('*')
+    //   .gte('start_time', startDate.toISOString());
 
-    if (error) throw error;
+    // if (error) throw error;
 
-    const chatToCall = sessions.filter(s => s.conversion_path?.includes('call')).length;
-    const chatToDemo = sessions.filter(s => s.conversion_path?.includes('demo')).length;
-    const chatToDownload = sessions.filter(s => s.conversion_path?.includes('download')).length;
-
-    const responseTimes = sessions.map(s => s.response_time).filter(t => t > 0);
-    const averageResponseTime = responseTimes.length > 0 
-      ? responseTimes.reduce((sum, time) => sum + time, 0) / responseTimes.length 
-      : 0;
-
-    // Sentiment distribution
-    const sentimentScores = this.groupSentimentScores(sessions.map(s => s.sentiment));
-
-    // Drop-off points
-    const dropOffPoints = this.analyzeDropOffPoints(sessions);
-
+    // Return mock data for now
     return {
-      chatToCall,
-      chatToDemo,
-      chatToDownload,
-      averageResponseTime,
-      sentimentScores,
-      dropOffPoints
+      chatToCall: 0,
+      chatToDemo: 0,
+      chatToDownload: 0,
+      averageResponseTime: 0,
+      sentimentScores: [],
+      dropOffPoints: []
     };
   }
 
   // Hot Lead Detection
   async detectHotLeads(): Promise<Array<{ sessionId: string; score: number; industry: string; urgency: string }>> {
-    const { data: sessions, error } = await supabase
-      .from('session_analytics')
-      .select('*')
-      .gte('lead_score', 80)
-      .eq('disposition', 'pending')
-      .order('lead_score', { ascending: false })
-      .limit(10);
+    // TODO: Implement session_analytics table
+    // const { data: sessions, error } = await supabase
+    //   .from('session_analytics')
+    //   .select('*')
+    //   .gte('lead_score', 80)
+    //   .eq('disposition', 'pending')
+    //   .order('lead_score', { ascending: false })
+    //   .limit(10);
 
-    if (error) throw error;
+    // if (error) throw error;
 
-    return sessions.map(session => ({
-      sessionId: session.session_id,
-      score: session.lead_score,
-      industry: session.tags?.find(tag => tag.includes('industry:'))?.split(':')[1] || 'Unknown',
-      urgency: this.determineUrgency(session.lead_score, session.sentiment)
-    }));
+    // Return mock data for now
+    return [];
   }
 
   // Real-time Dashboard Data
@@ -349,13 +334,15 @@ export class AnalyticsEngine {
   }
 
   private async getActiveSessions(): Promise<number> {
-    const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
-    const { count } = await supabase
-      .from('session_analytics')
-      .select('*', { count: 'exact', head: true })
-      .gte('start_time', fiveMinutesAgo.toISOString());
+    // TODO: Implement session_analytics table
+    // const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+    // const { count } = await supabase
+    //   .from('session_analytics')
+    //   .select('*', { count: 'exact', head: true })
+    //   .gte('start_time', fiveMinutesAgo.toISOString());
     
-    return count || 0;
+    // return count || 0;
+    return 0;
   }
 
   private async getLeadsCount(since: Date): Promise<number> {
@@ -378,25 +365,29 @@ export class AnalyticsEngine {
   }
 
   private async getAverageResponseTime(): Promise<number> {
-    const { data } = await supabase
-      .from('session_analytics')
-      .select('response_time')
-      .not('response_time', 'is', null);
+    // TODO: Implement session_analytics table
+    // const { data } = await supabase
+    //   .from('session_analytics')
+    //   .select('response_time')
+    //   .not('response_time', 'is', null);
 
-    if (!data || data.length === 0) return 0;
+    // if (!data || data.length === 0) return 0;
 
-    const totalTime = data.reduce((sum, session) => sum + (session.response_time || 0), 0);
-    return totalTime / data.length;
+    // const totalTime = data.reduce((sum, session) => sum + (session.response_time || 0), 0);
+    // return totalTime / data.length;
+    return 0;
   }
 
   private async getHotLeadsCount(): Promise<number> {
-    const { count } = await supabase
-      .from('session_analytics')
-      .select('*', { count: 'exact', head: true })
-      .gte('lead_score', 80)
-      .eq('disposition', 'pending');
+    // TODO: Implement session_analytics table
+    // const { count } = await supabase
+    //   .from('session_analytics')
+    //   .select('*', { count: 'exact', head: true })
+    //   .gte('lead_score', 80)
+    //   .eq('disposition', 'pending');
     
-    return count || 0;
+    // return count || 0;
+    return 0;
   }
 
   private determineUrgency(score: number, sentiment: number): string {

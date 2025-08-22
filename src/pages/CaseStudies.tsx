@@ -289,9 +289,9 @@ const CaseStudies = () => {
   };
 
   const handleBookNow = () => {
-    window.open('https://calendly.com/raj-dalal-xlevatetech', '_blank');
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'BookNowClick', {
+  window.location.href = '/automation-roi-calculator';
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'ROICalculatorClick', {
         event_category: 'engagement',
         event_label: 'case_studies_cta_banner'
       });
@@ -357,7 +357,7 @@ const CaseStudies = () => {
       />
       
       <Helmet>
-        <title>Case Studies - Real-World AI Transformations in Progress | XlevateTech</title>
+        <title>Case Studies - AI Transformations in Progress | XlevateTech</title>
         <meta name="description" content="Transparent progress snapshots of live AI deployments. See early metrics, methodology specifics, and FTC-compliant disclaimers while awaiting final client approval." />
         <meta name="keywords" content="AI automation case studies, business transformation, ROI, efficiency gains, real-world results, project progress" />
         <link rel="canonical" href="https://xlevatetech.com/case-studies" />
@@ -382,7 +382,7 @@ const CaseStudies = () => {
           <div className="container mx-auto px-2 md:px-4 lg:px-6 relative z-10">
             <div className="text-center my-12">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-primary-glow bg-clip-text text-transparent leading-tight px-4 py-2">
-                Real-World Transformations in Progress
+                AI Transformations in Progress
               </h1>
               
               {/* Compliance Notice */}
@@ -393,10 +393,10 @@ const CaseStudies = () => {
                 </div>
               </div>
               
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">We're nearly complete two AI and Automation deployments. Explore early metrics, see how they compare to 2025 industry averages, and join our waitlist to get the full ROI reports upon client approval.</p>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Two major implementations completing Q4 2025. Early metrics show 40%+ efficiency gains. Join our waitlist to get the full ROI reports upon client approval.</p>
               
               <Button size="lg" onClick={handleWaitlistSignup} className="bg-primary hover:bg-primary/90 text-white font-semibold min-h-[44px] px-8 focus:ring-2 focus:ring-primary/20 focus:outline-none" aria-label="Join waitlist to be notified when full case studies launch">
-                Notify Me at Launch
+                Get Early Results Access
                 <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Button>
             </div>
@@ -701,7 +701,7 @@ const CaseStudies = () => {
                 </p>
               </div>
               <Button size="lg" onClick={handleBookNow} className="bg-white text-primary hover:bg-white/90 font-semibold w-full md:w-auto min-h-[44px] px-8 focus:ring-2 focus:ring-white/20 focus:outline-none" aria-label="Book a 15-minute consultation call">
-                Book Now
+                Start Assessment
                 <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Button>
             </div>

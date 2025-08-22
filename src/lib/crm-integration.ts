@@ -466,16 +466,18 @@ export class ConversionBooster {
   // A/B Testing for Messages
   async getOptimizedMessage(messageType: 'welcome' | 'followup' | 'escalation', userSegment: string): Promise<string> {
     try {
-      const { data } = await supabase
-        .from('message_variants')
-        .select('content, performance_score')
-        .eq('message_type', messageType)
-        .eq('user_segment', userSegment)
-        .order('performance_score', { ascending: false })
-        .limit(1)
-        .single();
+      // TODO: Implement message_variants table
+      // const { data } = await supabase
+      //   .from('message_variants')
+      //   .select('content, performance_score')
+      //   .eq('message_type', messageType)
+      //   .eq('user_segment', userSegment)
+      //   .order('performance_score', { ascending: false })
+      //   .limit(1)
+      //   .single();
 
-      return data?.content || this.getDefaultMessage(messageType);
+      // return data?.content || this.getDefaultMessage(messageType);
+      return this.getDefaultMessage(messageType);
     } catch (error) {
       return this.getDefaultMessage(messageType);
     }

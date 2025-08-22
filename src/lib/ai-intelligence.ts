@@ -74,26 +74,17 @@ export class SessionMemoryManager {
       return this.sessions.get(sessionId)!;
     }
 
-    // Load from database
-    const { data, error } = await supabase
-      .from('session_memory')
-      .select('*')
-      .eq('session_id', sessionId)
-      .single();
+    // Load from database - TODO: implement session_memory table
+    // const { data, error } = await supabase
+    //   .from('session_memory')
+    //   .select('*')
+    //   .eq('session_id', sessionId)
+    //   .single();
 
-    if (error || !data) return null;
+    // if (error || !data) return null;
 
-    const session: SessionMemory = {
-      userId: data.user_id,
-      sessionId: data.session_id,
-      context: data.context,
-      leadScore: data.lead_score,
-      escalationTriggers: data.escalation_triggers || [],
-      consentStatus: data.consent_status
-    };
-
-    this.sessions.set(sessionId, session);
-    return session;
+    // Temporary fallback until table is created
+    return null;
   }
 
   async updateSession(sessionId: string, updates: Partial<SessionMemory>): Promise<void> {
@@ -102,18 +93,18 @@ export class SessionMemoryManager {
 
     this.sessions.set(sessionId, updated as SessionMemory);
 
-    // Persist to database
-    await supabase
-      .from('session_memory')
-      .upsert({
-        session_id: sessionId,
-        user_id: updated.userId,
-        context: updated.context,
-        lead_score: updated.leadScore,
-        escalation_triggers: updated.escalationTriggers,
-        consent_status: updated.consentStatus,
-        updated_at: new Date().toISOString()
-      });
+    // Persist to database - TODO: implement session_memory table
+    // await supabase
+    //   .from('session_memory')
+    //   .upsert({
+    //     session_id: sessionId,
+    //     user_id: updated.userId,
+    //     context: updated.context,
+    //     lead_score: updated.leadScore,
+    //     escalation_triggers: updated.escalationTriggers,
+    //     consent_status: updated.consentStatus,
+    //     updated_at: new Date().toISOString()
+    //   });
   }
 }
 
@@ -255,8 +246,8 @@ export class EscalationDetector {
       'budget': { type: 'budget' as const, severity: 'medium' as const },
       'timeline': { type: 'timeline' as const, severity: 'medium' as const },
       'urgent': { type: 'timeline' as const, severity: 'high' as const },
-      'ceo': { type: 'authority' as const, severity: 'high' as const },
-      'decision': { type: 'authority' as const, severity: 'medium' as const }
+      'ceo': { type: 'keyword' as const, severity: 'high' as const },
+      'decision': { type: 'keyword' as const, severity: 'medium' as const }
     };
 
     const triggers: EscalationTrigger[] = [];

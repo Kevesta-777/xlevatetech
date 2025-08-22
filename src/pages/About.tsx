@@ -34,12 +34,13 @@ const About = () => {
                 Meet the Founder Transforming{" "}
                 <span className="text-elevate-accent">Business Operations</span>
               </h1>
-              <div className="max-w-4xl mx-auto space-y-6">
-                <p className="text-xl text-gray-300 leading-relaxed md:text-2xl font-thin text-left">With over a decade optimizing complex business processes for companies of all sizes, Raj founded Xlevate Tech to deliver proven automation strategies with personal attention. Having streamlined operations at fast-growing companies like Bswift and Bounteous, Raj brings that same expertise directly to your business—without the overhead and delays of large consulting teams.</p>
+           <div className="max-w-4xl mx-auto space-y-6">
+                <p className="text-xl text-gray-300 leading-relaxed md:text-2xl font-light text-left">
+                  With over a decade optimizing complex business processes for companies of all sizes, Raj founded Xlevate Tech to deliver proven automation strategies with personal attention. Having streamlined operations at fast-growing companies like Bswift and Bounteous, Raj brings that same expertise directly to your business—without the overhead and delays of large consulting teams.
+                </p>
                 <div className="bg-gradient-to-r from-elevate-accent/20 to-elevate-accent/10 border border-elevate-accent/30 rounded-xl p-6 mt-8">
-                  <p className="text-lg md:text-xl text-white font-semibold">
-                    The automation specialist who turns your biggest time-wasting processes into your competitive advantage and eliminating repetitive tasks that drain your team's productivity.
-                    <span className="text-elevate-accent font-thin"> </span>
+                  <p className="text-lg md:text-xl text-white font-semibold text-left">
+                    The automation specialist who turns your biggest time-wasting processes into your competitive advantage, eliminating repetitive tasks that drain your team's productivity.
                   </p>
                 </div>
               </div>

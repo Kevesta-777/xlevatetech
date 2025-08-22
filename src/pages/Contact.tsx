@@ -10,39 +10,88 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+
 const Contact = () => {
+  console.log('TEST - Contact page loaded');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+  
   useEffect(() => {
     // Set document title
     document.title = "Contact - Xlevate Tech | Start Your Automation Journey";
-
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Get your free automation consultation with Xlevate Tech. Transform your operations with AI and process automation solutions.');
     }
   }, []);
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    // Get form data
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const company = formData.get('company') as string || '';
+    const phone = formData.get('phone') as string || '';
+    const industry = formData.get('industry') as string || '';
+    const message = formData.get('message') as string;
+
+    // Parse name into first and last name
+    const nameParts = name.trim().split(' ');
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    // Save to Supabase leads table
+    const { error } = await supabase
+      .from('leads')
+      .insert({
+        first_name: firstName,
+        last_name: lastName,
+        email: email.toLowerCase().trim(),
+        company_name: company.trim() || null,
+        phone: phone.trim() || null,
+        industry_sector: industry || null,
+        pain_points: message.trim(),
+        source: 'form',
+        stage: 'captured',
+        notes: 'Submitted via website contact form',
+        opt_out: false,
+        budget_qualified: false
+      });
+
+    if (error) {
+      throw error;
+    }
+
+    // Success
     toast({
       title: "Message Sent Successfully!",
       description: "We'll get back to you within 24 hours with your free consultation details."
     });
-    setIsSubmitting(false);
-
+    
     // Reset form
-    const form = e.target as HTMLFormElement;
     form.reset();
-  };
-  return <div className="min-h-screen bg-elevate-dark">
-      <header>
+
+  } catch (error) {
+    console.error('Contact form submission error:', error);
+    toast({
+      title: "Error",
+      description: "Sorry, there was an error sending your message. Please try again."
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+return <div className="min-h-screen bg-elevate-dark">
+       <header>
         <Navbar />
       </header>
       
@@ -133,6 +182,7 @@ const Contact = () => {
                         <SelectItem value="data" className="text-white hover:bg-elevate-accent/20">Data</SelectItem>
                         <SelectItem value="process" className="text-white hover:bg-elevate-accent/20">Process</SelectItem>
                         <SelectItem value="qa" className="text-white hover:bg-elevate-accent/20">QA</SelectItem>
+                        <SelectItem value="other" className="text-white hover:bg-elevate-accent/20">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -179,7 +229,7 @@ const Contact = () => {
                   <div className="space-y-4">
                     <a href="mailto:raj.dalal@xlevatetech.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group">
                       <Mail className="h-5 w-5 text-elevate-accent group-hover:scale-110 transition-transform duration-300" />
-                      <span className="font-medium">raj.dalal@xlevatetech.com</span>
+                      <span className="font-medium">sales@xlevatetech.com</span>
                     </a>
                     
                     <a href="tel:+18479210915" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group">

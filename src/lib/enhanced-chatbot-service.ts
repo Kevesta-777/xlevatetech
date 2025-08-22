@@ -116,7 +116,7 @@ export class EnhancedChatbotService {
     // 9. Check for escalation based on lead score
     if (leadScore.category === 'hot' && leadScore.score >= 85) {
       await this.triggerEscalation(session, {
-        type: 'intent',
+        type: 'keyword',
         severity: 'high',
         message: 'High-value lead detected',
         timestamp: new Date()
@@ -427,17 +427,17 @@ Response Guidelines:
 
   private async triggerEscalation(session: SessionMemory, trigger: EscalationTrigger): Promise<void> {
     try {
-      // Log escalation
-      await supabase.from('escalations').insert({
-        session_id: session.sessionId,
-        user_id: session.userId,
-        trigger_type: trigger.type,
-        severity: trigger.severity,
-        message: trigger.message,
-        lead_score: session.leadScore,
-        context: session.context,
-        created_at: new Date().toISOString()
-      });
+      // Log escalation - TODO: implement escalations table
+      // await supabase.from('escalations').insert({
+      //   session_id: session.sessionId,
+      //   user_id: session.userId,
+      //   trigger_type: trigger.type,
+      //   severity: trigger.severity,
+      //   message: trigger.message,
+      //   lead_score: session.leadScore,
+      //   context: session.context,
+      //   created_at: new Date().toISOString()
+      // });
 
       // Send to Slack/CRM (implement based on your setup)
       await this.sendToSlack(session, trigger);

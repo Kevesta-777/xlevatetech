@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download, FileText, BarChart3, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useToast } from '@/hooks/use-toast';
 
 interface Resource {
   id: string;
@@ -16,7 +15,6 @@ interface Resource {
 }
 
 export const PopularResources = () => {
-  const { toast } = useToast();
   const { data: resources = [], isLoading } = useQuery({
     queryKey: ['popular-resources'],
     queryFn: async () => {
@@ -41,12 +39,26 @@ export const PopularResources = () => {
     }
   };
 
-  const handleDownload = async (_resource: Resource) => {
-    toast({
-      title: 'Coming soon',
-      description: 'Will be implemented shortly this month.'
-    });
-    return;
+  const handleDownload = async (resource: Resource) => {
+    // Increment download count
+    try {
+      await supabase
+        .from('resources')
+        .update({ download_count: resource.download_count + 1 })
+        .eq('id', resource.id);
+      
+      // Trigger file download
+      const link = document.createElement('a');
+      link.href = resource.pdf_url;
+      link.download = resource.title;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error downloading resource:', error);
+    }
   };
 
   if (isLoading) {

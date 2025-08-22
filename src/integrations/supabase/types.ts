@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "12.2.3 (519615d)"
+    PostgrestVersion: "13.0.4"
   }
   public: {
     Tables: {
@@ -276,6 +276,48 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_posts: {
+        Row: {
+          author: string | null
+          content: string | null
+          created_at: string
+          excerpt: string | null
+          external_id: string
+          id: string
+          published_date: string
+          source_url: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string | null
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          external_id: string
+          id?: string
+          published_date: string
+          source_url: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string | null
+          content?: string | null
+          created_at?: string
+          excerpt?: string | null
+          external_id?: string
+          id?: string
+          published_date?: string
+          source_url?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       chat_cache: {
         Row: {
           hit_count: number | null
@@ -465,7 +507,6 @@ export type Database = {
           direction: string
           id: string
           lead_id: string | null
-          phone: string
           referrals: number
           replied: boolean
           user_id: string | null
@@ -482,7 +523,6 @@ export type Database = {
           direction?: string
           id?: string
           lead_id?: string | null
-          phone: string
           referrals?: number
           replied?: boolean
           user_id?: string | null
@@ -499,7 +539,6 @@ export type Database = {
           direction?: string
           id?: string
           lead_id?: string | null
-          phone?: string
           referrals?: number
           replied?: boolean
           user_id?: string | null
@@ -530,7 +569,6 @@ export type Database = {
           industry_sector: string | null
           last_contacted_at: string | null
           last_name: string
-          lead_source: string | null
           location: string | null
           notes: string | null
           opt_out: boolean
@@ -559,7 +597,6 @@ export type Database = {
           industry_sector?: string | null
           last_contacted_at?: string | null
           last_name: string
-          lead_source?: string | null
           location?: string | null
           notes?: string | null
           opt_out?: boolean
@@ -588,7 +625,6 @@ export type Database = {
           industry_sector?: string | null
           last_contacted_at?: string | null
           last_name?: string
-          lead_source?: string | null
           location?: string | null
           notes?: string | null
           opt_out?: boolean
@@ -936,9 +972,9 @@ export type Database = {
       log_admin_action: {
         Args: {
           p_action: string
-          p_details?: Json
-          p_resource_id?: string
-          p_resource_type?: string
+          p_details: Json
+          p_resource_id: string
+          p_resource_type: string
         }
         Returns: undefined
       }

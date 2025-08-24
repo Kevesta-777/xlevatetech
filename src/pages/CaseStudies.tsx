@@ -713,7 +713,7 @@ const CaseStudies = () => {
       </div>
       
       <Footer />
-      <EnhancedXlevateScout/>
+      {/* <EnhancedXlevateScout/> */}
     </>
   );
 };

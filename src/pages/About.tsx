@@ -316,7 +316,6 @@ const About = () => {
 
       <Footer />
       <ScrollToTop />
-      {/* <EnhancedXlevateScout /> */}
     </div>;
 };
 export default About;

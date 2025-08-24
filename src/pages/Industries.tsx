@@ -231,7 +231,7 @@ const Industries = () => {
         <Footer />
       </footer>
       <ScrollToTop />
-      <EnhancedXlevateScout/>
+      {/* <EnhancedXlevateScout/> */}
     </div>;
 };
 

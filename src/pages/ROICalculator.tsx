@@ -545,7 +545,7 @@ const ROICalculator = () => {
           <Footer />
         </footer>
         <ScrollToTop />
-        <EnhancedXlevateScout />
+        {/* <EnhancedXlevateScout /> */}
         {/* Data Sources Modal */}
         <DataSourcesModal open={showDataSources} onOpenChange={setShowDataSources} />
       </div>

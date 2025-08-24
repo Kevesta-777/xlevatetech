@@ -455,7 +455,7 @@ const Blog = () => {
 
       <Footer />
       <ScrollToTop />
-      <EnhancedXlevateScout/>
+      {/* <EnhancedXlevateScout/> */}
     </div>
   );
 };

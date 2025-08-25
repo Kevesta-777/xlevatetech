@@ -182,7 +182,6 @@ return <div className="min-h-screen bg-elevate-dark">
                         <SelectItem value="data" className="text-white hover:bg-elevate-accent/20">Data</SelectItem>
                         <SelectItem value="process" className="text-white hover:bg-elevate-accent/20">Process</SelectItem>
                         <SelectItem value="qa" className="text-white hover:bg-elevate-accent/20">QA</SelectItem>
-                        <SelectItem value="other" className="text-white hover:bg-elevate-accent/20">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -229,7 +228,7 @@ return <div className="min-h-screen bg-elevate-dark">
                   <div className="space-y-4">
                     <a href="mailto:raj.dalal@xlevatetech.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group">
                       <Mail className="h-5 w-5 text-elevate-accent group-hover:scale-110 transition-transform duration-300" />
-                      <span className="font-medium">sales@xlevatetech.com</span>
+                      <span className="font-medium">raj.dalal@xlevatetech.com</span>
                     </a>
                     
                     <a href="tel:+18479210915" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 group">

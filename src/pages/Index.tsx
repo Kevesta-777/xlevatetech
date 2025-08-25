@@ -83,7 +83,7 @@ const Index = () => {
       </footer>
       
       <ScrollToTop />
-      <EnhancedXlevateScout />
+      {/* <EnhancedXlevateScout /> */}
     </div>
   );
 };

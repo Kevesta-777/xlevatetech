@@ -1,65 +1,70 @@
+// src/components/blog/SEOHead.tsx
+
 import { Helmet } from 'react-helmet-async';
+import { SEO_META_TAGS, STRUCTURED_DATA } from '@/config/seoMetaConfig';
 
 interface SEOHeadProps {
   title: string;
   description: string;
   keywords?: string;
   image?: string;
-  url?: string;
+  url: string;
   type?: string;
 }
 
 export const SEOHead = ({ 
   title, 
   description, 
-  keywords = "", 
-  image = "/og-image.jpg",
-  url = "https://xlevatetech.com",
-  type = "website"
+  keywords, 
+  image, 
+  url, 
+  type = "website" 
 }: SEOHeadProps) => {
+  
+  // Determine which page we're on based on URL
+  const getPageKey = (): keyof typeof SEO_META_TAGS | null => {
+    if (url === 'https://xlevatetech.com' || url === 'https://xlevatetech.com/') return 'homepage';
+    if (url.includes('/about')) return 'about';
+    if (url.includes('/services')) return 'services';
+    if (url.includes('/industries')) return 'industries';
+    if (url.includes('/automation-roi-calculator')) return 'calculator';
+    if (url.includes('/case-studies')) return 'caseStudies';
+    if (url.includes('/contact')) return 'contact';
+    if (url.includes('/blog')) return 'blog';
+    return null;
+  };
+
+  const pageKey = getPageKey();
+  const pageMeta = pageKey ? SEO_META_TAGS[pageKey] : null;
+  const pageStructuredData = pageKey && STRUCTURED_DATA[pageKey as keyof typeof STRUCTURED_DATA] 
+    ? STRUCTURED_DATA[pageKey as keyof typeof STRUCTURED_DATA] 
+    : { ...STRUCTURED_DATA.default, name: title, description, url };
+
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      {/* Title and Basic Meta */}
+      <title>{pageMeta?.title || title}</title>
+      <meta name="description" content={pageMeta?.description || description} />
       {keywords && <meta name="keywords" content={keywords} />}
-      <meta name="robots" content="index, follow" />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={pageMeta?.canonical || url} />
 
-      {/* Open Graph Tags */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      {/* OpenGraph Meta */}
+      <meta property="og:title" content={pageMeta?.og.title || title} />
+      <meta property="og:description" content={pageMeta?.og.description || description} />
+      <meta property="og:url" content={pageMeta?.og.url || url} />
+      <meta property="og:image" content={pageMeta?.og.image || image || "https://xlevatetech.com/images/xlevate-social-home.png"} />
       <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
       <meta property="og:site_name" content="Xlevate Tech" />
 
-      {/* Twitter Card Tags */}
+      {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:title" content={pageMeta?.twitter.title || title} />
+      <meta name="twitter:description" content={pageMeta?.twitter.description || description} />
+      <meta name="twitter:image" content={pageMeta?.twitter.image || image || "https://xlevatetech.com/images/xlevate-social-home.png"} />
 
       {/* JSON-LD Structured Data */}
       <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": title,
-          "description": description,
-          "url": url,
-          "mainEntity": {
-            "@type": "Organization",
-            "name": "Xlevate Tech",
-            "url": "https://xlevatetech.com",
-            "description": "Leading provider of business process automation solutions",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+1-312-555-0123",
-              "contactType": "customer service"
-            }
-          }
-        })}
+        {JSON.stringify(pageStructuredData)}
       </script>
     </Helmet>
   );

@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import IndustryImpactSection from "@/components/IndustryImpactSection";
 import ServicesSection from "@/components/ServicesSection";
 import ImplementationTimelineSection from "@/components/ImplementationTimelineSection";
-import StartupCredibilitySection from "@/components/StartupCredibilitySection";
+import StartupCredibilitySection from "@/components/section/StartupCredibilitySection";
 import UrgencySection from "@/components/UrgencySection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";

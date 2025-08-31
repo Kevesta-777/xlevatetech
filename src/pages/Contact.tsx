@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import { useEffect, useState } from "react";
+import { SEOHead } from "@/components/blog/SEOHead";
+import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, CheckCircle, Lock, Award, Users, Zap } from "lucide-react";
 import Globe from "../components/Globe";
 import { Button } from "@/components/ui/button";
@@ -16,16 +17,6 @@ const Contact = () => {
   console.log('TEST - Contact page loaded');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  
-  useEffect(() => {
-    // Set document title
-    document.title = "Contact - Xlevate Tech | Start Your Automation Journey";
-    // Set meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Get your free automation consultation with Xlevate Tech. Transform your operations with AI and process automation solutions.');
-    }
-  }, []);
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -91,6 +82,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 };
 
 return <div className="min-h-screen bg-elevate-dark">
+      <SEOHead pageKey="contact" />
        <header>
         <Navbar />
       </header>
@@ -182,6 +174,7 @@ return <div className="min-h-screen bg-elevate-dark">
                         <SelectItem value="data" className="text-white hover:bg-elevate-accent/20">Data</SelectItem>
                         <SelectItem value="process" className="text-white hover:bg-elevate-accent/20">Process</SelectItem>
                         <SelectItem value="qa" className="text-white hover:bg-elevate-accent/20">QA</SelectItem>
+                        <SelectItem value="other" className="text-white hover:bg-elevate-accent/20">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

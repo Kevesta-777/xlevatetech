@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import { Calendar, Download, CheckCircle, Star, Factory, ArrowRight, Shield, Zap, TrendingUp, Target, Award, Clock, Users, DollarSign } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
+import { SEOHead } from "@/components/blog/SEOHead";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { InteractiveTimelineEstimator } from "@/components/services/InteractiveTimelineEstimator";
@@ -12,34 +12,8 @@ import { CostSavingsCalculator } from "@/components/services/CostSavingsCalculat
 import { ServicePackageBuilder } from "@/components/services/ServicePackageBuilder";
 import { PricingComparisonChart } from "@/components/industries/PricingComparisonChart";
 import { ROITimelineChart } from "@/components/industries/ROITimelineChart";
+
 const Services = () => {
-  useEffect(() => {
-    document.title = "AI Automation Services & Custom Development | 30-40% Below Enterprise Rates | Xlevate Tech";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Professional AI automation services with transparent pricing. Proven 30% efficiency gains. Free consultation and 2-6 week implementation.');
-    }
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": ["Service", "Organization", "ProfessionalService"],
-      "name": "Xlevate Tech AI Automation Services",
-      "description": "Professional AI automation services with research-backed competitive pricing",
-      "provider": {
-        "@type": "Organization",
-        "name": "Xlevate Tech"
-      },
-      "serviceType": "AI Automation and Custom Development",
-      "areaServed": "United States"
-    };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-    return () => {
-      const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
-      scripts.forEach(script => script.remove());
-    };
-  }, []);
   const pricingIncentives = [{
     title: "Startup Launch Discount",
     description: "25% off first project for companies <50 employees",
@@ -278,6 +252,7 @@ const Services = () => {
     }]
   }];
   return <div className="min-h-screen bg-elevate-dark text-white mobile-section">
+      <SEOHead pageKey="services" />
       <a href="#main-content" className="skip-to-main">Skip to main content</a>
       <header>
         <Navbar />

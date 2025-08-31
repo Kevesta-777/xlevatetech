@@ -10,7 +10,7 @@ import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
-import { SEOOptimizer } from "@/components/blog/SEOOptimizer";
+import { SEOHead } from "@/components/blog/SEOHead";
 import FAQSchema from "@/components/FAQSchema";
 import { useEffect } from "react";
 
@@ -24,8 +24,8 @@ const Index = () => {
       console.log(`Page load time: ${loadTime.toFixed(2)}ms`);
       
       // Track page view in analytics
-      if (typeof (window as any).gtag !== 'undefined') {
-        (window as any).gtag('event', 'page_view', {
+      if (typeof window !== 'undefined' && 'gtag' in window) {
+        (window as Window & { gtag: (...args: unknown[]) => void }).gtag('event', 'page_view', {
           page_title: 'Xlevate Tech - AI Automation Solutions',
           page_location: window.location.href,
           load_time: Math.round(loadTime)
@@ -44,23 +44,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-elevate-dark" style={{ paddingLeft: '1rem', paddingRight: '1rem' }}>
-      <SEOOptimizer
-        title="Reclaim 30+ Hours Monthly with AI Automation"
-        description="AI automation solutions for finance, healthcare & real estate. 30-45% cost savings, 2-6 week implementation. Chicago-based experts with proven ROI."
-        keywords={[
-          "AI automation",
-          "workflow optimization", 
-          "no-code automation",
-          "business process automation",
-          "healthcare automation",
-          "finance automation",
-          "real estate automation",
-          "compliance automation",
-          "operational efficiency"
-        ]}
-        type="website"
-        url="https://xlevatetech.com"
-      />
+      <SEOHead pageKey="homepage" />
       
       <FAQSchema />
       

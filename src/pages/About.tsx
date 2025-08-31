@@ -2,25 +2,17 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
-import { useEffect } from "react";
+import { SEOHead } from "@/components/blog/SEOHead";
 import { Check, Calendar, TrendingUp, Users, DollarSign, Clock, Linkedin, Mail, Target } from "lucide-react";
 import AnimatedMetric from "@/components/roi/AnimatedMetric";
 import LightSpotlight from "@/components/LightSpotlight";
 import AnimatedArrow from "@/components/AnimatedArrow";
 import { SkillGrowthChart } from "@/components/SkillGrowthChart";
 import { CareerTimelineChart } from "@/components/CareerTimelineChart";
-const About = () => {
-  useEffect(() => {
-    // Set document title
-    document.title = "Meet Raj Dalal | Founder & AI Automation Expert | 10+ Years Enterprise Experience | Xlevate Tech";
 
-    // Set meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Meet Raj Dalal, AI automation expert with 10+ years experience helping finance, healthcare & real estate businesses reduce operational costs by 30-50%.');
-    }
-  }, []);
+const About = () => {
   return <div className="min-h-screen bg-elevate-dark">
+      <SEOHead pageKey="about" />
       <header>
         <Navbar />
       </header>

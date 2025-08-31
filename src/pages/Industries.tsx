@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { SEOHead } from "@/components/blog/SEOHead";
 import { EnhancedIndustriesGrid } from "@/components/industries/EnhancedIndustriesGrid";
 import { TechTrendsChart } from "@/components/industries/TechTrendsChart";
 import { MarketShareChart } from "@/components/industries/MarketShareChart";
@@ -9,48 +9,11 @@ import { KeyInsights } from "@/components/industries/KeyInsights";
 import { ComplianceSection } from "@/components/industries/ComplianceSection";
 import { Sparkles, Zap, Shield, Target } from "lucide-react";
 import { EnhancedXlevateScout } from "@/components/EnhancedXlevateScout";
-const Industries = () => {
-  useEffect(() => {
-    // Enhanced SEO with FTC-compliant industry benchmarks
-    document.title = "AI Automation Solutions by Industry | 2025 Market Benchmarks | Xlevate Tech";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Industry-leading AI automation solutions based on 2025 market research. Discover benchmarks showing 37-76% efficiency gains across healthcare, finance, real estate, and commercial sectors.');
-    }
 
-    // Enhanced industry-specific schema markup
-    const schemaScript = document.createElement('script');
-    schemaScript.type = 'application/ld+json';
-    schemaScript.innerHTML = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Xlevate Tech",
-      "description": "Industry-leading AI automation solutions based on 2025 market research benchmarks across real estate, wealth management, healthcare, and commercial sectors",
-      "url": "https://xlevatetech.com/industries",
-      "serviceType": ["Industry Analysis", "Automation Benchmarking", "AI Implementation Strategy", "Process Optimization"],
-      "areaServed": "United States",
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential", 
-        "credentialCategory": "Industry Research",
-        "description": "2025 market benchmarks indicating 37-76% average efficiency improvements"
-      },
-      "potentialAction": [{
-        "@type": "ContactAction",
-        "target": "https://xlevatetech.com/contact"
-      }, {
-        "@type": "ScheduleAction",
-        "target": "https://xlevatetech.com/contact"
-      }]
-    });
-    document.head.appendChild(schemaScript);
-    return () => {
-      if (document.head.contains(schemaScript)) {
-        document.head.removeChild(schemaScript);
-      }
-    };
-  }, []);
+const Industries = () => {
 
   return <div className="min-h-screen bg-elevate-dark overflow-hidden">
+      <SEOHead pageKey="industries" />
       {/* Skip Link for Accessibility */}
       <a href="#main-content" className="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-elevate-accent text-white px-4 py-2 rounded-lg z-50">
         Skip to main content

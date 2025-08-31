@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { SEOHead } from '@/components/blog/SEOHead';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -7,7 +7,6 @@ import { Search, Calendar, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
-import { SEOOptimizer } from '@/components/blog/SEOOptimizer';
 import { ReadingProgress } from '@/components/blog/ReadingProgress';
 import { SocialShare } from '@/components/blog/SocialShare';
 import { PopularResources } from '@/components/blog/PopularResources';
@@ -259,27 +258,7 @@ const Blog = () => {
     <div className="min-h-screen bg-elevate-dark">
       <ReadingProgress />
       
-      <Helmet>
-        <title>Automation Insights & Industry Trends | Xlevate Tech (2025)</title>
-        <meta name="description" content="Discover cutting-edge AI automation strategies, implementation guides, and exclusive case studies for 2025. Expert analysis across healthcare, finance, and real estate sectors with industry benchmarks." />
-        <meta name="keywords" content="AI automation 2025, automation trends, case studies, implementation strategies, industry benchmarks, workflow optimization, business automation" />
-      </Helmet>
-
-      <SEOOptimizer
-        title="Automation Insights & Industry Trends | Xlevate Tech (2025)"
-        description="Discover cutting-edge AI automation strategies, implementation guides, and exclusive case studies for 2025. Expert analysis across healthcare, finance, and real estate sectors with industry benchmarks."
-        keywords={[
-          "AI automation 2025",
-          "automation trends",
-          "case studies",
-          "implementation strategies",
-          "industry benchmarks",
-          "workflow optimization",
-          "business automation"
-        ]}
-        type="website"
-        url="https://xlevatetech.com/blog"
-      />
+      <SEOHead pageKey="blog" />
 
       <Navbar />
       

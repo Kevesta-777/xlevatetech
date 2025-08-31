@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import { SEOHead } from "@/components/blog/SEOHead";
 import { Sparkles, Calculator, TrendingUp, Clock, DollarSign, BarChart3, Building2, HeartPulse, TrendingDown, Download, Database, Settings, Zap, Target, PieChart, Activity, MousePointer, Info } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -113,21 +113,7 @@ const ROICalculator = () => {
   };
   return <TooltipProvider>
       <div className="min-h-screen bg-elevate-dark relative">
-        <Helmet>
-          <title>Automated ROI Calculator 2025 | Xlevate Tech</title>
-          <meta name="description" content="Calculate your 2025 AI automation ROI with live market data. Industry benchmarks for Finance, Healthcare & Real Estate." />
-          <script type="application/ld+json">
-            {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Automation ROI Calculator 2025",
-            "url": "https://xlevatetech.com/automation-roi-calculator",
-            "description": "Calculate potential savings from AI automation with 2025 industry benchmarks",
-            "applicationCategory": "BusinessApplication",
-            "operatingSystem": "Web Browser"
-          })}
-          </script>
-        </Helmet>
+        <SEOHead pageKey="calculator" />
 
         {/* Data Flow Animation Background - Removed for better performance */}
 

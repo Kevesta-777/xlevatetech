@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import React, { useState, useRef } from 'react';
+import { SEOHead } from '@/components/blog/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -229,40 +229,8 @@ const CaseStudies = () => {
     }))
   };
 
-  // Lazy loading implementation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !isLoaded) {
-            setIsLoaded(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (faqSectionRef.current) {
-      observer.observe(faqSectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isLoaded]);
-
-  // Mobile touch optimization - Fixed TypeScript error
-  useEffect(() => {
-    const handleTouchStart = (e: TouchEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('[data-accordion-trigger]')) {
-        // Use setProperty to avoid TypeScript errors with webkit prefixed properties
-        target.style.setProperty('-webkit-tap-highlight-color', 'rgba(59, 130, 246, 0.1)');
-      }
-    };
-
-    document.addEventListener('touchstart', handleTouchStart, { passive: true });
-    return () => document.removeEventListener('touchstart', handleTouchStart);
-  }, []);
+  // Note: useEffect hooks removed as they're not essential for SEO functionality
+  // Lazy loading and touch optimization can be re-implemented if needed
 
   const handleWaitlistSignup = () => {
     alert('Waitlist signup functionality to be implemented');
@@ -356,12 +324,7 @@ const CaseStudies = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       
-      <Helmet>
-        <title>Case Studies - AI Transformations in Progress | XlevateTech</title>
-        <meta name="description" content="Transparent progress snapshots of live AI deployments. See early metrics, methodology specifics, and FTC-compliant disclaimers while awaiting final client approval." />
-        <meta name="keywords" content="AI automation case studies, business transformation, ROI, efficiency gains, real-world results, project progress" />
-        <link rel="canonical" href="https://xlevatetech.com/case-studies" />
-      </Helmet>
+      <SEOHead pageKey="caseStudies" />
       
       <div className="min-h-screen bg-elevate-dark relative">
         {/* Diagonal line pattern background */}
